@@ -712,8 +712,10 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <h3 data-en="De Paarse Dop — Inventory Management for a Brewery">De Paarse Dop — Voorraadbeheer voor een Brouwerij</h3>
+            <img src="voorraadbeheer.png" alt="De Paarse Dop dashboard: stock categories with item counts and a recent-activity log" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
             <p data-en="A Flask application I built as a favor: fully in Dutch, with login for a fixed group of users, categories and items to track, and an activity log that summarizes every change in plain language. A recipe module calculates live whether a recipe is feasible based on current stock.">Een Flask-applicatie die ik als gunst bouwde: volledig in het Nederlands, met login voor een vaste groep gebruikers, categorieën en items bijhouden, en een activiteitenlog die elke mutatie leesbaar samenvat. Een receptenmodule berekent live of een recept haalbaar is op basis van de huidige voorraad.</p>
             <p data-en="No open registration, automatic daily backups, and a deploy flow via GitHub Desktop to PythonAnywhere. A completely different domain from gaming, but the same approach: get the foundations right first.">Geen open registratie, automatische dagelijkse backups, en een deploy-flow via GitHub Desktop naar PythonAnywhere. Een heel ander domein dan gaming, maar dezelfde aanpak: eerst de fundamenten goed neerzetten.</p>
+            <p data-en="Still brand new — the brewery isn't using it yet. Right now I'm testing it with dummy data, hence names like 'Vieze Vlekken' and 'Bittere Ballen'.">Nog gloednieuw — de brouwerij gebruikt 'm nog niet. Ik ben 'm nu aan het testen met dummy data, vandaar namen als 'Vieze Vlekken' en 'Bittere Ballen'.</p>
         </div>
 
         <div class="tech-grid">
@@ -775,7 +777,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <img src="error.png" alt="Anti-cheat log: gameserver detecting a client/binary score divergence and skipping the submit" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
-            <p data-en="Live production log from the anti-cheat: the server replays a session and compares it to the score the client claimed, then skips the submit the moment they diverge (1751 vs. 1429, and again 1542 vs. 1328). A later, legitimate run matches exactly (23 vs. 23) and gets submitted." style="margin-top:1.5rem;">Live productielog van de anti-cheat: de server speelt een sessie na en vergelijkt 'm met de door de client geclaimde score, en skipt de submit zodra ze uiteenlopen (1751 vs. 1429, en nog een keer 1542 vs. 1328). Een latere, legitieme run matcht exact (23 vs. 23) en wordt wél ingestuurd.</p>
+            <p data-en="Live production log from the anti-cheat: the server replays a session and compares it to the score the client claimed. This particular divergence (1751 vs. 1429, and again 1542 vs. 1328) wasn't a cheat attempt — it was my own mistake: I'd forgotten to build a new Linux build of the game and push it to Hetzner, so the client and server were briefly running different code. Exactly what the anti-cheat is supposed to catch — submit blocked until things were back in sync. After the fix, a later run matches exactly (23 vs. 23) and gets submitted." style="margin-top:1.5rem;">Live productielog van de anti-cheat: de server speelt een sessie na en vergelijkt 'm met de door de client geclaimde score. Deze divergentie (1751 vs. 1429, en nog een keer 1542 vs. 1328) was geen cheat-poging, maar een eigen fout: ik was vergeten een nieuwe Linux-build van de game te maken en naar Hetzner te pushen, waardoor client en server even niet dezelfde code draaiden. Precies wat de anti-cheat hoort te vangen — submit geblokkeerd tot het weer synchroon liep. Na de fix matcht een latere run exact (23 vs. 23) en wordt wél ingestuurd.</p>
         </div>
 
         <div class="card">
@@ -794,32 +796,55 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
     <section class="section">
         <h2 data-en="Live in Action">Live in Actie</h2>
 
-        <div class="media-placeholder">
-            <i class="fas fa-play-circle"></i>
-            <p data-en="Video demo of a complete tournament: start → users playing → real-time leaderboard → automatic payouts">Video demo van een complete tournament: start → users playing → real-time leaderboard → automatic payouts</p>
+        <div class="card">
+            <img src="finished.png" alt="Telegram group message showing a finished Chart Retard challenge: final standings, prize distribution rules, and automated payout confirmations" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+            <p data-en="The automated conclusion of a challenge: final standings, the prize distribution rules, and payout confirmations posted straight to the group — no manual work." style="margin-top:1.5rem;">De automatische afsluiting van een challenge: final standings, de prijsverdelingsregels, en payout-bevestigingen die rechtstreeks in de groep geplaatst worden — zonder handwerk.</p>
         </div>
 
         <div class="tech-grid">
             <div class="card">
-                <h3>Tournament Flow</h3>
-                <div class="media-placeholder">
-                    <i class="fas fa-trophy"></i>
-                    <p data-en="Screenshots of Telegram commands, tournament scheduling, and leaderboard updates">Screenshots van Telegram commands, tournament scheduling, en leaderboard updates</p>
-                </div>
+                <h3 data-en="Starting a Challenge">Een Challenge Starten</h3>
+                <img src="gameselect.png" alt="Telegram bot showing the /start flow: pick a game from the list and set a timer" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <p data-en="The group owner types /start, picks a game from the list, and sets how many hours the challenge should run." style="margin-top:1.5rem;">De groepseigenaar typt /start, kiest een spel uit de lijst en stelt in hoeveel uur de challenge moet duren.</p>
             </div>
 
             <div class="card">
-                <h3>Blockchain Payouts</h3>
-                <div class="media-placeholder">
-                    <i class="fas fa-coins"></i>
-                    <p data-en="Transaction screenshots, wallet integrations, and automated prize distribution">Transaction screenshots, wallet integrations, en automated prize distribution</p>
+                <h3 data-en="Live & Playing">Live & Spelen</h3>
+                <img src="playinggame.png" alt="Live gameplay of Maze Runner inside the Telegram Mini App" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <p data-en="Once the challenge goes live, members play directly inside the Mini App — here, Maze Runner mid-run." style="margin-top:1.5rem;">Zodra de challenge live staat, spelen leden rechtstreeks in de Mini App — hier Maze Runner, midden in een potje.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-en="Real-Time Leaderboard">Real-Time Leaderboard</h3>
+                <img src="leaderboardupdate.png" alt="Live challenge message with current leader and an automatic highscore notification" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <p data-en="The challenge message updates live with the current leader and time remaining, and every new highscore automatically triggers a notification in the group." style="margin-top:1.5rem;">De challenge-boodschap update live met de huidige koploper en tijd resterend, en elke nieuwe highscore triggert automatisch een notificatie in de groep.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-en="Owner Controls">Instellingen voor Eigenaren</h3>
+                <img src="groupsettings.png" alt="Group owner settings screen: network, prizes per place, and minimum token hold" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <p data-en="Group owners configure the network, prizes per place, and minimum hold themselves — all from the app, no code or manual intervention needed." style="margin-top:1.5rem;">Groepseigenaren stellen zelf het netwerk, de prijzen per plek en de minimum hold in — allemaal vanuit de app, geen code of handmatige tussenkomst nodig.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-en="Player Wallet">Speler Wallet</h3>
+                <img src="walletsettings.png" alt="Player profile screen with per-game scores and wallet linking" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <p data-en="Players link their own wallet (Solana or TON) in the app, alongside their per-game scores — so the system automatically knows where the prizes should go." style="margin-top:1.5rem;">Spelers koppelen hun eigen wallet (Solana of TON) in de app, samen met hun scores per spel — zo weet het systeem automatisch waar de prijzen naartoe moeten.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-en="On-Chain Payouts">Payouts On-Chain</h3>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
+                    <img src="solpayout.png" alt="Solscan transaction: successful Solana SPL token payout to 4 winners" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                    <img src="tonpayout.png" alt="Tonscan transaction: successful TON jetton payout, prize for rank 4" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 </div>
+                <p data-en="No internal bookkeeping — real, publicly verifiable on-chain transactions. On the left, a Solana SPL token payout to 4 winners in a single transaction; on the right, a TON jetton payout with the winner's rank embedded in the payload." style="margin-top:1.5rem;">Geen interne boekhouding — echte, publiek verifieerbare on-chain transacties. Links een Solana SPL-token payout naar 4 winnaars in één transactie, rechts een TON-jetton payout met de rang van de winnaar in de payload.</p>
             </div>
         </div>
 
         <div class="card">
             <h3>User Experience</h3>
-            <p data-en="Players can play games directly in Telegram, scores update in real time, and winners automatically receive crypto payouts. No manual work, no errors, just seamless gaming with real rewards.">Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards.</p>
+            <p data-en="Players can play games directly in Telegram, scores update in real time, and winners automatically receive crypto payouts. No manual work, no errors, just seamless gaming with real rewards. Playing through the browser works too, but without score saving — outside Telegram there's no way to know who you are. A separate login (Google or similar) is on the roadmap.">Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards. Spelen via de browser kan ook, maar dan zonder score-opslag — buiten Telegram weten we niet wie je bent. Een aparte login (bijvoorbeeld via Google) staat op de roadmap.</p>
         </div>
     </section>
 
