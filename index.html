@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highscore Gaming Bot - Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0d2e 50%, #16213e 100%);
+            color: #00d9ff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d9ff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        .star:nth-child(odd) {
+            animation-duration: 4s;
+            background: #b967db;
+        }
+        
+        .star:nth-child(3n) {
+            animation-duration: 5s;
+            background: #ff6b9d;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff;
+                filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.5));
+            }
+            50% { 
+                text-shadow: 0 0 30px #b967db, 0 0 60px #b967db, 0 0 90px #b967db;
+                filter: drop-shadow(0 0 50px rgba(185, 103, 219, 0.8));
+            }
+        }
+        
+        @keyframes color-shift {
+            0% { color: #00d9ff; }
+            25% { color: #b967db; }
+            50% { color: #ff6b9d; }
+            75% { color: #00ff88; }
+            100% { color: #00d9ff; }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: glow-pulse 3s infinite;
+            background: linear-gradient(45deg, #00d9ff, #b967db, #ff6b9d);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow-pulse 3s infinite, gradient-shift 6s infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: color-shift 4s infinite;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2rem;
+            animation: float 2s infinite;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+        
+        /* Content Sections */
+        .section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00d9ff, #b967db);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s infinite;
+        }
+        
+        .section p, .section li {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        /* Glassmorphism Cards */
+        .card {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(185, 103, 219, 0.4);
+            box-shadow: 0 12px 48px rgba(185, 103, 219, 0.2);
+        }
+        
+        /* Tech Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tech-item {
+            background: rgba(185, 103, 219, 0.1);
+            border: 1px solid rgba(185, 103, 219, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(185, 103, 219, 0.3);
+        }
+        
+        .tech-item h3 {
+            color: #ff6b9d;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Code Block Styling */
+        .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00d9ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #00d9ff;
+            color: #0a0a0f;
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Interactive Buttons */
+        .glow-button {
+            background: linear-gradient(45deg, #00d9ff, #b967db);
+            border: none;
+            border-radius: 30px;
+            padding: 15px 40px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .glow-button:hover::before {
+            left: 100%;
+        }
+        
+        .glow-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00d9ff, #b967db, #ff6b9d);
+        }
+        
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 45%;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff6b9d;
+        }
+        
+        /* Media Upload Areas */
+        .media-placeholder {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px dashed rgba(0, 217, 255, 0.5);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .media-placeholder:hover {
+            border-color: rgba(185, 103, 219, 0.8);
+            background: rgba(185, 103, 219, 0.1);
+        }
+        
+        .media-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 40px);
+                margin-left: 40px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+        }
+        
+        /* Particle Effects */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00d9ff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-float 6s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(-10px) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-90vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) scale(0);
+            }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 217, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b9d;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="stars-container" id="stars"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>HIGHSCORE GAMING BOT</h1>
+        <div class="subtitle">From Trucking to Tech - Built with AI in 3 Months</div>
+        <div class="scroll-indicator" onclick="document.getElementById('journey').scrollIntoView()">
+            ⬇️
+        </div>
+    </section>
+    
+    <!-- The Journey -->
+    <section class="section" id="journey">
+        <h2>The Journey</h2>
+        <div class="card">
+            <p>Als vrachtwagenchauffeur had ik geen programmeer achtergrond. Geen diploma, geen bootcamp - alleen de drive om iets te bouwen. Met AI als co-pilot heb ik in 3 maanden een complete gaming platform ontwikkeld die echte crypto rewards uitbetaalt.</p>
+            <p>Waar traditionele developers jaren over zouden doen, bewees ik dat AI development democratiseert. Niet door het denken over te nemen, maar door een krachtige partner te zijn in het leerproces.</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Week 1-2: The Vision</h3>
+                    <p>Gaming communities wilden echte rewards, maar tournaments waren chaotisch en handmatig. Ik zag de kans om dit te automatiseren met blockchain payouts.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Week 3-6: Learning by Breaking</h3>
+                    <p>Unity games die geen scores doorstuurden. Database connections die faalden. AI assistants die bleven dromen over verkeerde oplossingen. Elke crash was een les.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Week 7-10: Technical Breakthroughs</h3>
+                    <p>Flask server werkend. Blockchain payouts live. Real-time leaderboards. Async job recovery. Van frustratie naar doorbraken.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Week 11-12: Production Ready</h3>
+                    <p>Complete ecosystem: Unity games → Flask API → SQL Database → Telegram Bot → Blockchain. Échte users, échte tournaments, échte payouts.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Technical Deep Dive -->
+    <section class="section">
+        <h2>Technical Architecture</h2>
+        
+        <div class="code-block">
+Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot → Blockchain
+        </div>
+        
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3>Backend Mastery</h3>
+                <ul>
+                    <li>Python Telegram Bot API voor real-time messaging</li>
+                    <li>Flask server op PythonAnywhere voor score processing</li>
+                    <li>SQL database met geoptimaliseerde queries</li>
+                    <li>Async job scheduling voor automated tournaments</li>
+                    <li>Comprehensive error handling & recovery systems</li>
+                </ul>
+            </div>
+            
+            <div class="tech-item">
+                <h3>Blockchain Integration</h3>
+                <ul>
+                    <li>TON & Solana network support</li>
+                    <li>Automated wallet validation</li>
+                    <li>Minimum hold requirements voor eligibility</li>
+                    <li>Smart payout distribution algoritmes</li>
+                    <li>Multi-token prize pools</li>
+                </ul>
+            </div>
+            
+            <div class="tech-item">
+                <h3>Game Development</h3>
+                <ul>
+                    <li>Unity WebGL games met HTTP score submission</li>
+                    <li>Anti-cheat validation systems</li>
+                    <li>Real-time leaderboard synchronization</li>
+                    <li>Cross-platform deployment</li>
+                    <li>Performance optimization</li>
+                </ul>
+            </div>
+            
+            <div class="tech-item">
+                <h3>Production Infrastructure</h3>
+                <ul>
+                    <li>PythonAnywhere deployment</li>
+                    <li>Database migrations voor Telegram group upgrades</li>
+                    <li>Job recovery na server crashes</li>
+                    <li>Rate limiting voor blockchain RPC calls</li>
+                    <li>Monitoring & logging systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Solving -->
+    <section class="section">
+        <h2>Real-World Problem Solving</h2>
+        
+        <div class="card">
+            <h3>The Debugging Journey</h3>
+            <p>Elke developer kent dit gevoel: dagen vastzitten op een "simpel" probleem. Verouderde Solana imports die conflicteerden met Telegram libraries. Unity games die scores niet doorstuurden door verkeerde HTTP headers. AI assistants die in loops bleven hangen op verkeerde oplossingen.</p>
+            <p>De echte skill zit in het herkennen wanneer je een andere aanpak moet proberen, en de doorzettingsvermogen om door te gaan tot het werkt.</p>
+        </div>
+        
+        <div class="media-placeholder">
+            <i class="fas fa-image"></i>
+            <p>Screenshots van debugging sessions, error logs, of breakthrough moments</p>
+        </div>
+        
+        <div class="card">
+            <h3>Production Challenges Opgelost</h3>
+            <ul>
+                <li><strong>Concurrent Gaming:</strong> Handling multiple simultaneous tournaments zonder database conflicts</li>
+                <li><strong>Chat Migrations:</strong> Automatic database migration wanneer Telegram groepen upgraden</li>
+                <li><strong>Job Recovery:</strong> Robust system recovery na server crashes of restarts</li>
+                <li><strong>Rate Limiting:</strong> Smart caching voor blockchain RPC calls om costs te minimaliseren</li>
+                <li><strong>Error Resilience:</strong> Comprehensive exception handling zonder user experience te verstoren</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Live Demo -->
+    <section class="section">
+        <h2>Live in Action</h2>
+        
+        <div class="media-placeholder">
+            <i class="fas fa-play-circle"></i>
+            <p>Video demo van een complete tournament: start → users playing → real-time leaderboard → automatic payouts</p>
+        </div>
+        
+        <div class="tech-grid">
+            <div class="card">
+                <h3>Tournament Flow</h3>
+                <div class="media-placeholder">
+                    <i class="fas fa-trophy"></i>
+                    <p>Screenshots van Telegram commands, tournament scheduling, en leaderboard updates</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Blockchain Payouts</h3>
+                <div class="media-placeholder">
+                    <i class="fas fa-coins"></i>
+                    <p>Transaction screenshots, wallet integrations, en automated prize distribution</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>User Experience</h3>
+            <p>Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards.</p>
+        </div>
+    </section>
+    
+    <!-- What's Next -->
+    <section class="section">
+        <h2>What This Proves</h2>
+        
+        <div class="card">
+            <p>Deze bot toont meer dan technical skills. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
+            <p>Van concept tot productie in 3 maanden. Van vrachtwagenchauffeur tot developer die blockchain integrations bouwt. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
+        </div>
+        
+        <div class="tech-grid">
+            <div class="card">
+                <h3>Business Logic</h3>
+                <p>Tournament scheduling, prize distribution algoritmes, anti-cheat systems, user management - complete product thinking.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Technical Depth</h3>
+                <p>Full-stack development, database design, blockchain integration, async programming, production deployment.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Problem Solving</h3>
+                <p>Debug complex issues, understand system interactions, build robust error handling, optimize performance.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Product Mindset</h3>
+                <p>User experience design, community building, growth planning, technical scalability considerations.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact -->
+    <section class="section">
+        <h2>Let's Build Something</h2>
+        
+        <div class="card">
+            <p>Ik zoek opportunities om mijn ontwikkeling voort te zetten. Of je nu een startup bent die een technical co-founder zoekt, of een bedrijf dat iemand wil die out-of-the-box denkt - ik ben geïnteresseerd in uitdagende projecten waar ik kan groeien.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>jouw@email.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-telegram"></i>
+                <h3>Telegram</h3>
+                <p>@jouwusername</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>github.com/jouwusername</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-robot"></i>
+                <h3>Live Bot</h3>
+                <p>@highscoregamingbot</p>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Create animated stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+        
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Particle effects on mouse move
+        let particles = [];
+        
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                createParticle(e.clientX, e.clientY);
+            }
+        });
+        
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+        
+        // Initialize
+        createStars();
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add glow effect on card hover
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 12px 48px rgba(0, 217, 255, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+            });
+        });
+    </script>
+</body>
+</html>
