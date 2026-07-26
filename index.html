@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highscore Gaming Bot - Portfolio</title>
+    <title>Yordy Humme - Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
@@ -499,7 +499,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>HIGHSCORE GAMING BOT</h1>
+        <h1>YORDY HUMME</h1>
         <div class="subtitle" data-en="From Trucking to Tech — 12 Months of Solo Building with AI">Van Trucker tot Developer — 12 Maanden Solo Bouwen met AI</div>
         <div class="scroll-indicator" onclick="document.getElementById('journey').scrollIntoView()">
             ⬇️
@@ -623,7 +623,7 @@ Lokaal wijzigen → git push → GitHub Actions / GitHub Pages → Live
         <h2 data-en="Technical Architecture">Technische Architectuur</h2>
 
         <div class="code-block">
-Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot → Blockchain
+Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → SQLite → Telegram Bot → Blockchain (Solana/TON)
         </div>
 
         <div class="tech-grid">
@@ -739,8 +739,18 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <h3 data-en="Harmonic Horizons — VR Music Experience">Harmonic Horizons — VR Muziekervaring</h3>
+            <img src="harmonichorizons.png" alt="Unreal Engine 5 editor showing the Harmonic Horizons procedural terrain in the viewport" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
             <p data-en="A VR experience built in Unreal Engine 5.7.2 (ported from an earlier Unity prototype) where the world is procedurally generated in real time based on music: tempo and intensity drive terrain shape, biome and speed. Inspired by Vib-Ribbon — automatic forward movement, minimal interaction, purely about flow and visual harmony. Target platform: Steam/PC first, later PS5/PSVR2.">Een VR-experience gebouwd in Unreal Engine 5.7.2 (geport vanuit een eerder Unity-prototype) waarin de wereld in real-time procedureel gegenereerd wordt op basis van muziek: tempo en intensiteit sturen terreinvorm, biome en snelheid. Geïnspireerd door Vib-Ribbon — automatische voorwaartse beweging, minimale interactie, puur gericht op flow en visuele harmonie. Doelplatform: eerst Steam/PC, later PS5/PSVR2.</p>
             <p data-en="A single continuous procedural mesh (treadmill system, no chunks or seams) with a biome system (Meadow, Hills, Mountains, Valley) via in-editor DataAssets and parameter blending to avoid hard transitions, plus a path system that guides the player along walkable terrain. Already tested in VR through PSVR2/SteamVR. Little time to spare for it, but the core is in place and working.">Een enkele continue procedurele mesh (treadmill-systeem, geen chunks of naden) met een biome-systeem (Meadow, Hills, Mountains, Valley) via in-editor instelbare DataAssets en parameter-blending om harde overgangen te voorkomen, plus een pad-systeem dat de speler langs begaanbaar terrein leidt. Al getest in VR via PSVR2/SteamVR. Weinig tijd voor over, maar de kern staat en werkt.</p>
+        </div>
+
+        <div class="card">
+            <h3 data-en="Retro Gaming Setup — Pegasus Frontend">Retro Gaming Setup — Pegasus Frontend</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
+                <img src="pegasus1.png" alt="Pegasus Frontend NES game library, browsable by console and title" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="pegasus2.png" alt="Custom Pegasus theme with a console selector (N64, NES, Genesis, PlayStation, PS2, Steam, SNES) and a Continue Playing row" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+            </div>
+            <p data-en="For the couch I set up a full retro-gaming setup with Pegasus Frontend: every game organized by console and manufacturer, so I can launch and close anything without getting up. Almost every console has its own emulator — I configured each one individually for graphics and controls, with Claude as a partner in figuring out every emulator's quirks." style="margin-top:1.5rem;">Voor de bank heb ik een volledige retro-gaming setup ingericht met Pegasus Frontend: alle games gerangschikt per console en fabrikant, zodat ik elk spel kan starten en weer sluiten zonder op te staan. Bijna elke console heeft z'n eigen emulator — die heb ik stuk voor stuk zelf ingesteld op grafiek en besturing, met Claude als partner bij het uitpluizen van elke emulator z'n eigenaardigheden.</p>
         </div>
     </section>
 
@@ -749,8 +759,30 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
         <h2 data-en="Teaching Bots to Play">Bots Leren Spelen</h2>
 
         <div class="card">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
+                <img src="aibot.png" alt="Telegram /ai panel: live status of a training bot, with Stop, Render video and Reset controls" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="monitor.png" alt="Telegram /monitor panel: service uptime plus the live status of every training bot and video render" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+            </div>
+            <p data-en="From Telegram I can start, stop, reset, and render a video of any training bot (/ai), and see at a glance whether every service and training run is still alive (/monitor) — both built by me, no need to log in anywhere else." style="margin-top:1.5rem;">Vanuit Telegram kan ik elke trainingsbot starten, stoppen, resetten en er een video van laten renderen (/ai), en in één oogopslag zien of alle services en trainingen nog draaien (/monitor) — allebei door mij gebouwd, zonder ergens anders te hoeven inloggen.</p>
             <p data-en="Alongside the platform work, I experiment with machine learning: training bots that learn to play my own games, using Unity ML-Agents and my own evolutionary algorithms (CMA-ES), both trained directly on the same deterministic game binaries the anti-cheat uses to verify scores. The training jobs run as separate systemd services on the VPS, with auto-recovery after a crash or restart.">Naast de platformkant experimenteer ik met machine learning: bots trainen die mijn eigen games leren spelen, via Unity ML-Agents en eigen evolutionaire algoritmes (CMA-ES), beide getraind rechtstreeks op dezelfde deterministische game-binaries die de anti-cheat gebruikt om scores te verifiëren. De trainingen draaien als losse systemd-services op de VPS, met auto-recovery na een crash of herstart.</p>
             <p data-en="It also produces a fun feature for players: &quot;beat the bot&quot; — a benchmark run that shows how well a trained model plays a level. Purely experimental work, but if I'm honest, it's secretly my favorite part to build.">Het levert ook een leuke feature op voor spelers: "versla de bot" — een benchmark-run die laat zien hoe goed een getraind model een level speelt. Puur experimenteel werk, maar ik vind dit stiekem het leukste deel om aan te bouwen.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="card">
+                <h3 data-en="Strat Bot — Brick Breaker">Strat-Bot — Brick Breaker</h3>
+                <video controls style="width:100%; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                    <source src="brickbreaker_strat_129_clip30s_20260726_070903.mp4" type="video/mp4">
+                </video>
+                <p data-en="A model-based strategy bot after 21+ hours of training, reaching a highscore of 129." style="margin-top:1.5rem;">Een model-based strategie-bot na 21+ uur trainen, met een highscore van 129.</p>
+            </div>
+            <div class="card">
+                <h3 data-en="Grind Bot — Maze Runner">Grind-Bot — Maze Runner</h3>
+                <video controls style="width:100%; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                    <source src="maze_runner_grind_247_clip30s_20260721_152814.mp4" type="video/mp4">
+                </video>
+                <p data-en="A PPO reinforcement-learning bot navigating the maze, reaching a score of 247." style="margin-top:1.5rem;">Een PPO reinforcement-learning bot die de doolhof navigeert, met een score van 247.</p>
+            </div>
         </div>
 
         <div class="tech-grid">
@@ -844,7 +876,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <h3>User Experience</h3>
-            <p data-en="Players can play games directly in Telegram, scores update in real time, and winners automatically receive crypto payouts. No manual work, no errors, just seamless gaming with real rewards. Playing through the browser works too, but without score saving — outside Telegram there's no way to know who you are. A separate login (Google or similar) is on the roadmap.">Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards. Spelen via de browser kan ook, maar dan zonder score-opslag — buiten Telegram weten we niet wie je bent. Een aparte login (bijvoorbeeld via Google) staat op de roadmap.</p>
+            <p data-en="Players can play games directly in Telegram, scores update in real time, and winners automatically receive crypto payouts. No manual work, no errors, just seamless gaming with real rewards. Playing through the browser works too, but without score saving — outside Telegram there's no way to know who you are. A separate login (Google or similar) is on the roadmap.">Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen handmatig werk, geen fouten, gewoon naadloos gamen met echte rewards. Spelen via de browser kan ook, maar dan zonder score-opslag — buiten Telegram weten we niet wie je bent. Een aparte login (bijvoorbeeld via Google) staat op de roadmap.</p>
         </div>
     </section>
 
@@ -853,7 +885,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
         <h2 data-en="What This Proves">Wat Dit Bewijst</h2>
 
         <div class="card">
-            <p data-en="This bot proves more than technical skill. It proves I can identify complex problems, architect technical solutions, and build complete systems that people actually use.">Deze bot toont meer dan technical skills. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
+            <p data-en="This bot proves more than technical skill. It proves I can identify complex problems, architect technical solutions, and build complete systems that people actually use.">Deze bot toont meer dan technische vaardigheden. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
             <p data-en="From concept to production in 12 months — from copy-pasting with ChatGPT to a Claude Code workflow that's dozens of times faster. From truck driver to solo developer building five original games, blockchain integrations and server-side anti-cheat — no team, just me. AI made it possible, but the thinking, the persistence, and the problem-solving — that came from me.">Van concept tot productie in 12 maanden — van copy-paste met ChatGPT tot een workflow met Claude Code die tientallen keren sneller is. Van vrachtwagenchauffeur tot solo-developer die vijf eigen games, blockchain-integraties en server-side anti-cheat bouwt — geen team, alleen ik. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
         </div>
 
@@ -885,32 +917,26 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
         <h2 data-en="Let's Build Something">Laten We Iets Bouwen</h2>
 
         <div class="card">
-            <p data-en="I'm looking for opportunities to keep growing as a developer. Whether you're a startup looking for a technical co-founder, or a company that wants someone who thinks outside the box — I'm interested in challenging projects where I can keep learning. Honestly, I just find all of this — the bot, the games, the infrastructure, training bots to play them — genuinely fun to work on, and that drive comes with me wherever I go.">Ik zoek opportunities om mijn ontwikkeling voort te zetten. Of je nu een startup bent die een technical co-founder zoekt, of een bedrijf dat iemand wil die out-of-the-box denkt - ik ben geïnteresseerd in uitdagende projecten waar ik kan groeien. Eerlijk gezegd vind ik dit allemaal — de bot, de games, de infrastructuur, bots trainen om ze te spelen — gewoon ontzettend leuk om te doen, en die drive neem ik overal mee naartoe.</p>
+            <p data-en="I'm looking for opportunities to keep growing as a developer. Whether you're a startup looking for a technical co-founder, or a company that wants someone who thinks outside the box — I'm interested in challenging projects where I can keep learning. Honestly, I just find all of this — the bot, the games, the infrastructure, training bots to play them — genuinely fun to work on, and that drive comes with me wherever I go.">Ik ben op zoek naar kansen om mijn ontwikkeling voort te zetten. Of je nu een startup bent die een technisch co-founder zoekt, of een bedrijf dat iemand wil die out-of-the-box denkt - ik ben geïnteresseerd in uitdagende projecten waar ik kan groeien. Eerlijk gezegd vind ik dit allemaal — de bot, de games, de infrastructuur, bots trainen om ze te spelen — gewoon ontzettend leuk om te doen, en die drive neem ik overal mee naartoe.</p>
         </div>
 
         <div class="contact-grid">
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
-                <p>jouw@email.com</p>
+                <p><a href="mailto:yordy_humme@hotmail.com" style="color:inherit; text-decoration:none;">yordy_humme@hotmail.com</a></p>
             </div>
 
             <div class="contact-item">
                 <i class="fab fa-telegram"></i>
                 <h3>Telegram</h3>
-                <p>@jouwusername</p>
+                <p><a href="https://t.me/HenkPanzerTank" style="color:inherit; text-decoration:none;">@HenkPanzerTank</a></p>
             </div>
 
             <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <h3>GitHub</h3>
-                <p>github.com/jouwusername</p>
-            </div>
-
-            <div class="contact-item">
-                <i class="fas fa-robot"></i>
-                <h3>Live Bot</h3>
-                <p>@highscoregamingbot</p>
+                <i class="fas fa-gamepad"></i>
+                <h3 data-en="Try the App">Probeer de App</h3>
+                <p><a href="https://t.me/highscoregamingbot" style="color:inherit; text-decoration:none;">Telegram</a> · <a href="https://highscoregamingbot.github.io/app/" style="color:inherit; text-decoration:none;" data-en="Browser">Browser</a></p>
             </div>
         </div>
     </section>
