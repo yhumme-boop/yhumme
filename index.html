@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yordy Humme - Portfolio</title>
+    <title>Yordy Humme — Self-Taught Developer | Unity, Python, Blockchain, AI</title>
+    <meta name="description" content="Self-taught developer. Built a live gaming platform solo in 12 months: Telegram Mini App, 12+ Unity WebGL games, real-time PvP, deterministic anti-cheat, and automated Solana/TON payouts.">
+    <meta name="keywords" content="self-taught developer, Unity, C#, Python, Flask, FastAPI, WebSocket, Telegram bot, Telegram Mini App, blockchain, Solana, TON, machine learning, ML-Agents, Unreal Engine, anti-cheat, full-stack, DevOps, CI/CD">
+    <meta name="author" content="Yordy Humme">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yordy Humme — From Truck Driver to Developer">
+    <meta property="og:description" content="12 months, entirely solo, alongside a 45-hour work week: a live gaming platform with Unity games, real-time multiplayer, deterministic anti-cheat and automated crypto payouts.">
+    <meta property="og:image" content="img/finished.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yordy Humme — From Truck Driver to Developer">
+    <meta name="twitter:description" content="A live gaming platform built solo in 12 months: Unity, Python, real-time multiplayer, anti-cheat and blockchain payouts.">
+    <meta name="twitter:image" content="img/finished.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
@@ -488,6 +501,102 @@
             margin-bottom: 1rem;
             color: #ff6b9d;
         }
+
+        /* Summary / TL;DR */
+        .summary {
+            max-width: 900px;
+            margin: 0 auto 2rem auto;
+            background: rgba(185, 103, 219, 0.12);
+            border: 1px solid rgba(185, 103, 219, 0.4);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .summary ul {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .summary li {
+            font-size: clamp(0.95rem, 1.6vw, 1.15rem) !important;
+            margin-bottom: 0.8rem !important;
+            text-align: left !important;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+
+        .summary li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff6b9d;
+        }
+
+        /* Zoomable images + lightbox */
+        .zoomable {
+            cursor: zoom-in;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            cursor: zoom-in;
+        }
+
+        .lightbox img.zoomed {
+            max-width: none;
+            max-height: none;
+            width: 220%;
+            cursor: zoom-out;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            font-size: 2.4rem;
+            line-height: 1;
+            color: #00d9ff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 201;
+        }
+
+        .lightbox-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(0, 217, 255, 0.7);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -496,6 +605,12 @@
     <div class="stars-container" id="stars"></div>
 
     <button class="lang-toggle" id="lang-toggle" aria-label="Switch language / Wissel taal">EN</button>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <span class="lightbox-hint" id="lightbox-hint">Klik om in te zoomen · Esc om te sluiten</span>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -508,6 +623,17 @@
 
     <!-- The Journey -->
     <section class="section" id="journey">
+        <div class="summary">
+            <h2 data-en="In Short">In het Kort</h2>
+            <ul>
+                <li data-en="Truck driver, no degree. Taught myself development with AI as a co-pilot — 12 months, entirely solo, next to a 45-hour work week and a family with 2 kids."><strong>Vrachtwagenchauffeur, geen diploma.</strong> Mezelf leren ontwikkelen met AI als co-pilot — 12 maanden, volledig solo, naast een baan van 45 uur per week en een gezin met 2 kinderen.</li>
+                <li data-en="Built a live gaming platform: Telegram Mini App, 12+ Unity WebGL games, real-time PvP over WebSocket, and automated crypto payouts on Solana and TON."><strong>Een live gaming platform gebouwd:</strong> Telegram Mini App, 12+ Unity WebGL games, real-time PvP via WebSocket, en automatische crypto-payouts op Solana en TON.</li>
+                <li data-en="Five games designed and built from scratch, plus my own deterministic fixed-point engine so the server can replay every run bit-for-bit as anti-cheat."><strong>Vijf games volledig zelf ontworpen en gebouwd,</strong> plus een eigen deterministische fixed-point engine zodat de server elke run bit-identiek kan naspelen als anti-cheat.</li>
+                <li data-en="Runs on my own VPS with CI/CD, systemd services and monitoring — including handling a real production security incident."><strong>Draait op een eigen VPS</strong> met CI/CD, systemd-services en monitoring — inclusief het afhandelen van een echt productie-security-incident.</li>
+                <li data-en="Also: machine learning bots that learn to play my games, a Flask inventory app for a brewery, and a VR music experience in Unreal Engine 5."><strong>Daarnaast:</strong> machine learning bots die mijn games leren spelen, een Flask voorraad-app voor een brouwerij, en een VR-muziekervaring in Unreal Engine 5.</li>
+            </ul>
+        </div>
+
         <h2 data-en="The Journey">Het Traject</h2>
         <div class="card">
             <p data-en="More than 20 years ago I did 2 years of an ICT degree and never finished it — but it left me with some early programming and website-building experience. After that I became a truck driver. I've always loved gaming, still do, and always dreamed of making my own games — without years of formal training that felt out of reach, until AI suddenly made it possible.">Meer dan 20 jaar geleden deed ik 2 jaar een ICT-opleiding en heb die nooit afgemaakt — maar hield er wel wat vroege programmeer- en websitebouw-ervaring aan over. Daarna werd ik vrachtwagenchauffeur. Gamen heb ik altijd al geweldig gevonden en doe ik nog steeds, en ik heb altijd gedroomd van zelf games maken — zonder jarenlange opleiding leek dat onbereikbaar, tot AI het ineens wél mogelijk maakte.</p>
@@ -712,7 +838,7 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
 
         <div class="card">
             <h3 data-en="De Paarse Dop — Inventory Management for a Brewery">De Paarse Dop — Voorraadbeheer voor een Brouwerij</h3>
-            <img src="voorraadbeheer.png" alt="De Paarse Dop dashboard: stock categories with item counts and a recent-activity log" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
+            <img src="img/voorraadbeheer.jpg" data-full="voorraadbeheer.png" loading="lazy" class="zoomable" alt="De Paarse Dop dashboard: stock categories with item counts and a recent-activity log" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
             <p data-en="A Flask application I built as a favor: fully in Dutch, with login for a fixed group of users, categories and items to track, and an activity log that summarizes every change in plain language. A recipe module calculates live whether a recipe is feasible based on current stock.">Een Flask-applicatie die ik als gunst bouwde: volledig in het Nederlands, met login voor een vaste groep gebruikers, categorieën en items bijhouden, en een activiteitenlog die elke mutatie leesbaar samenvat. Een receptenmodule berekent live of een recept haalbaar is op basis van de huidige voorraad.</p>
             <p data-en="No open registration, automatic daily backups, and a deploy flow via GitHub Desktop to PythonAnywhere. A completely different domain from gaming, but the same approach: get the foundations right first.">Geen open registratie, automatische dagelijkse backups, en een deploy-flow via GitHub Desktop naar PythonAnywhere. Een heel ander domein dan gaming, maar dezelfde aanpak: eerst de fundamenten goed neerzetten.</p>
             <p data-en="Still brand new — the brewery isn't using it yet. Right now I'm testing it with dummy data, hence names like 'Vieze Vlekken' and 'Bittere Ballen'.">Nog gloednieuw — de brouwerij gebruikt 'm nog niet. Ik ben 'm nu aan het testen met dummy data, vandaar namen als 'Vieze Vlekken' en 'Bittere Ballen'.</p>
@@ -739,7 +865,7 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
 
         <div class="card">
             <h3 data-en="Harmonic Horizons — VR Music Experience">Harmonic Horizons — VR Muziekervaring</h3>
-            <img src="harmonichorizons.png" alt="Unreal Engine 5 editor showing the Harmonic Horizons procedural terrain in the viewport" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
+            <img src="img/harmonichorizons.jpg" data-full="harmonichorizons.png" loading="lazy" class="zoomable" alt="Unreal Engine 5 editor showing the Harmonic Horizons procedural terrain in the viewport" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block; margin-bottom:1.5rem;">
             <p data-en="A VR experience built in Unreal Engine 5.7.2 (ported from an earlier Unity prototype) where the world is procedurally generated in real time based on music: tempo and intensity drive terrain shape, biome and speed. Inspired by Vib-Ribbon — automatic forward movement, minimal interaction, purely about flow and visual harmony. Target platform: Steam/PC first, later PS5/PSVR2.">Een VR-experience gebouwd in Unreal Engine 5.7.2 (geport vanuit een eerder Unity-prototype) waarin de wereld in real-time procedureel gegenereerd wordt op basis van muziek: tempo en intensiteit sturen terreinvorm, biome en snelheid. Geïnspireerd door Vib-Ribbon — automatische voorwaartse beweging, minimale interactie, puur gericht op flow en visuele harmonie. Doelplatform: eerst Steam/PC, later PS5/PSVR2.</p>
             <p data-en="A single continuous procedural mesh (treadmill system, no chunks or seams) with a biome system (Meadow, Hills, Mountains, Valley) via in-editor DataAssets and parameter blending to avoid hard transitions, plus a path system that guides the player along walkable terrain. Already tested in VR through PSVR2/SteamVR. Little time to spare for it, but the core is in place and working.">Een enkele continue procedurele mesh (treadmill-systeem, geen chunks of naden) met een biome-systeem (Meadow, Hills, Mountains, Valley) via in-editor instelbare DataAssets en parameter-blending om harde overgangen te voorkomen, plus een pad-systeem dat de speler langs begaanbaar terrein leidt. Al getest in VR via PSVR2/SteamVR. Weinig tijd voor over, maar de kern staat en werkt.</p>
         </div>
@@ -747,8 +873,8 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
         <div class="card">
             <h3 data-en="Retro Gaming Setup — Pegasus Frontend">Retro Gaming Setup — Pegasus Frontend</h3>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
-                <img src="pegasus1.png" alt="Pegasus Frontend NES game library, browsable by console and title" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
-                <img src="pegasus2.png" alt="Custom Pegasus theme with a console selector (N64, NES, Genesis, PlayStation, PS2, Steam, SNES) and a Continue Playing row" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/pegasus1.jpg" data-full="pegasus1.png" loading="lazy" class="zoomable" alt="Pegasus Frontend NES game library, browsable by console and title" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/pegasus2.jpg" data-full="pegasus2.png" loading="lazy" class="zoomable" alt="Custom Pegasus theme with a console selector (N64, NES, Genesis, PlayStation, PS2, Steam, SNES) and a Continue Playing row" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
             </div>
             <p data-en="For the couch I set up a full retro-gaming setup with Pegasus Frontend: every game organized by console and manufacturer, so I can launch and close anything without getting up. Almost every console has its own emulator — I configured each one individually for graphics and controls, with Claude as a partner in figuring out every emulator's quirks." style="margin-top:1.5rem;">Voor de bank heb ik een volledige retro-gaming setup ingericht met Pegasus Frontend: alle games gerangschikt per console en fabrikant, zodat ik elk spel kan starten en weer sluiten zonder op te staan. Bijna elke console heeft z'n eigen emulator — die heb ik stuk voor stuk zelf ingesteld op grafiek en besturing, met Claude als partner bij het uitpluizen van elke emulator z'n eigenaardigheden.</p>
         </div>
@@ -760,8 +886,8 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
 
         <div class="card">
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
-                <img src="aibot.png" alt="Telegram /ai panel: live status of a training bot, with Stop, Render video and Reset controls" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
-                <img src="monitor.png" alt="Telegram /monitor panel: service uptime plus the live status of every training bot and video render" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/aibot.jpg" data-full="aibot.png" loading="lazy" class="zoomable" alt="Telegram /ai panel: live status of a training bot, with Stop, Render video and Reset controls" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/monitor.jpg" data-full="monitor.png" loading="lazy" class="zoomable" alt="Telegram /monitor panel: service uptime plus the live status of every training bot and video render" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
             </div>
             <p data-en="From Telegram I can start, stop, reset, and render a video of any training bot (/ai), and see at a glance whether every service and training run is still alive (/monitor) — both built by me, no need to log in anywhere else." style="margin-top:1.5rem;">Vanuit Telegram kan ik elke trainingsbot starten, stoppen, resetten en er een video van laten renderen (/ai), en in één oogopslag zien of alle services en trainingen nog draaien (/monitor) — allebei door mij gebouwd, zonder ergens anders te hoeven inloggen.</p>
             <p data-en="Alongside the platform work, I experiment with machine learning: training bots that learn to play my own games, using Unity ML-Agents and my own evolutionary algorithms (CMA-ES), both trained directly on the same deterministic game binaries the anti-cheat uses to verify scores. The training jobs run as separate systemd services on the VPS, with auto-recovery after a crash or restart.">Naast de platformkant experimenteer ik met machine learning: bots trainen die mijn eigen games leren spelen, via Unity ML-Agents en eigen evolutionaire algoritmes (CMA-ES), beide getraind rechtstreeks op dezelfde deterministische game-binaries die de anti-cheat gebruikt om scores te verifiëren. De trainingen draaien als losse systemd-services op de VPS, met auto-recovery na een crash of herstart.</p>
@@ -808,7 +934,7 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
         </div>
 
         <div class="card">
-            <img src="error.png" alt="Anti-cheat log: gameserver detecting a client/binary score divergence and skipping the submit" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+            <img src="img/error.jpg" data-full="error.png" loading="lazy" class="zoomable" alt="Anti-cheat log: gameserver detecting a client/binary score divergence and skipping the submit" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
             <p data-en="Live production log from the anti-cheat: the server replays a session and compares it to the score the client claimed. This particular divergence (1751 vs. 1429, and again 1542 vs. 1328) wasn't a cheat attempt — it was my own mistake: I'd forgotten to build a new Linux build of the game and push it to Hetzner, so the client and server were briefly running different code. Exactly what the anti-cheat is supposed to catch — submit blocked until things were back in sync. After the fix, a later run matches exactly (23 vs. 23) and gets submitted." style="margin-top:1.5rem;">Live productielog van de anti-cheat: de server speelt een sessie na en vergelijkt 'm met de door de client geclaimde score. Deze divergentie (1751 vs. 1429, en nog een keer 1542 vs. 1328) was geen cheat-poging, maar een eigen fout: ik was vergeten een nieuwe Linux-build van de game te maken en naar Hetzner te pushen, waardoor client en server even niet dezelfde code draaiden. Precies wat de anti-cheat hoort te vangen — submit geblokkeerd tot het weer synchroon liep. Na de fix matcht een latere run exact (23 vs. 23) en wordt wél ingestuurd.</p>
         </div>
 
@@ -829,46 +955,46 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
         <h2 data-en="Live in Action">Live in Actie</h2>
 
         <div class="card">
-            <img src="finished.png" alt="Telegram group message showing a finished Chart Retard challenge: final standings, prize distribution rules, and automated payout confirmations" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+            <img src="img/finished.jpg" data-full="finished.png" loading="lazy" class="zoomable" alt="Telegram group message showing a finished Chart Retard challenge: final standings, prize distribution rules, and automated payout confirmations" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
             <p data-en="The automated conclusion of a challenge: final standings, the prize distribution rules, and payout confirmations posted straight to the group — no manual work." style="margin-top:1.5rem;">De automatische afsluiting van een challenge: final standings, de prijsverdelingsregels, en payout-bevestigingen die rechtstreeks in de groep geplaatst worden — zonder handwerk.</p>
         </div>
 
         <div class="tech-grid">
             <div class="card">
                 <h3 data-en="Starting a Challenge">Een Challenge Starten</h3>
-                <img src="gameselect.png" alt="Telegram bot showing the /start flow: pick a game from the list and set a timer" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/gameselect.jpg" data-full="gameselect.png" loading="lazy" class="zoomable" alt="Telegram bot showing the /start flow: pick a game from the list and set a timer" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 <p data-en="The group owner types /start, picks a game from the list, and sets how many hours the challenge should run." style="margin-top:1.5rem;">De groepseigenaar typt /start, kiest een spel uit de lijst en stelt in hoeveel uur de challenge moet duren.</p>
             </div>
 
             <div class="card">
                 <h3 data-en="Live & Playing">Live & Spelen</h3>
-                <img src="playinggame.png" alt="Live gameplay of Maze Runner inside the Telegram Mini App" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/playinggame.jpg" data-full="playinggame.png" loading="lazy" class="zoomable" alt="Live gameplay of Maze Runner inside the Telegram Mini App" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 <p data-en="Once the challenge goes live, members play directly inside the Mini App — here, Maze Runner mid-run." style="margin-top:1.5rem;">Zodra de challenge live staat, spelen leden rechtstreeks in de Mini App — hier Maze Runner, midden in een potje.</p>
             </div>
 
             <div class="card">
                 <h3 data-en="Real-Time Leaderboard">Real-Time Leaderboard</h3>
-                <img src="leaderboardupdate.png" alt="Live challenge message with current leader and an automatic highscore notification" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/leaderboardupdate.jpg" data-full="leaderboardupdate.png" loading="lazy" class="zoomable" alt="Live challenge message with current leader and an automatic highscore notification" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 <p data-en="The challenge message updates live with the current leader and time remaining, and every new highscore automatically triggers a notification in the group." style="margin-top:1.5rem;">De challenge-boodschap update live met de huidige koploper en tijd resterend, en elke nieuwe highscore triggert automatisch een notificatie in de groep.</p>
             </div>
 
             <div class="card">
                 <h3 data-en="Owner Controls">Instellingen voor Eigenaren</h3>
-                <img src="groupsettings.png" alt="Group owner settings screen: network, prizes per place, and minimum token hold" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/groupsettings.jpg" data-full="groupsettings.png" loading="lazy" class="zoomable" alt="Group owner settings screen: network, prizes per place, and minimum token hold" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 <p data-en="Group owners configure the network, prizes per place, and minimum hold themselves — all from the app, no code or manual intervention needed." style="margin-top:1.5rem;">Groepseigenaren stellen zelf het netwerk, de prijzen per plek en de minimum hold in — allemaal vanuit de app, geen code of handmatige tussenkomst nodig.</p>
             </div>
 
             <div class="card">
                 <h3 data-en="Player Wallet">Speler Wallet</h3>
-                <img src="walletsettings.png" alt="Player profile screen with per-game scores and wallet linking" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                <img src="img/walletsettings.jpg" data-full="walletsettings.png" loading="lazy" class="zoomable" alt="Player profile screen with per-game scores and wallet linking" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 <p data-en="Players link their own wallet (Solana or TON) in the app, alongside their per-game scores — so the system automatically knows where the prizes should go." style="margin-top:1.5rem;">Spelers koppelen hun eigen wallet (Solana of TON) in de app, samen met hun scores per spel — zo weet het systeem automatisch waar de prijzen naartoe moeten.</p>
             </div>
 
             <div class="card">
                 <h3 data-en="On-Chain Payouts">Payouts On-Chain</h3>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
-                    <img src="solpayout.png" alt="Solscan transaction: successful Solana SPL token payout to 4 winners" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
-                    <img src="tonpayout.png" alt="Tonscan transaction: successful TON jetton payout, prize for rank 4" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                    <img src="img/solpayout.jpg" data-full="solpayout.png" loading="lazy" class="zoomable" alt="Solscan transaction: successful Solana SPL token payout to 4 winners" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
+                    <img src="img/tonpayout.jpg" data-full="tonpayout.png" loading="lazy" class="zoomable" alt="Tonscan transaction: successful TON jetton payout, prize for rank 4" style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,217,255,0.3); display:block;">
                 </div>
                 <p data-en="No internal bookkeeping — real, publicly verifiable on-chain transactions. On the left, a Solana SPL token payout to 4 winners in a single transaction; on the right, a TON jetton payout with the winner's rank embedded in the payload." style="margin-top:1.5rem;">Geen interne boekhouding — echte, publiek verifieerbare on-chain transacties. Links een Solana SPL-token payout naar 4 winnaars in één transactie, rechts een TON-jetton payout met de rang van de winnaar in de payload.</p>
             </div>
@@ -1047,6 +1173,47 @@ Unity Games (C#) → GameServer (FastAPI/WebSocket) + Score Server (Flask) → S
         });
 
         applyLanguage(currentLang);
+
+        // Lightbox: click a screenshot to view it full-size, click again to zoom in
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxHint = document.getElementById('lightbox-hint');
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightboxImg.classList.remove('zoomed');
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', () => {
+                openLightbox(img.dataset.full || img.src, img.alt);
+            });
+        });
+
+        lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxImg.classList.toggle('zoomed');
+        });
+
+        lightbox.addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+        });
+
+        const hintText = { nl: 'Klik om in te zoomen · Esc om te sluiten', en: 'Click to zoom · Esc to close' };
+        const setHint = () => { lightboxHint.textContent = hintText[currentLang] || hintText.nl; };
+        setHint();
+        langToggleBtn.addEventListener('click', setHint);
     </script>
 </body>
 </html>
