@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Highscore Gaming Bot - Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Rajdhani', sans-serif;
             background: linear-gradient(135deg, #0a0a0f 0%, #1a0d2e 50%, #16213e 100%);
@@ -20,7 +20,7 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        
+
         /* Animated Background */
         .stars-container {
             position: fixed;
@@ -31,7 +31,7 @@
             z-index: -1;
             overflow: hidden;
         }
-        
+
         .star {
             position: absolute;
             width: 2px;
@@ -40,38 +40,38 @@
             border-radius: 50%;
             animation: twinkle 3s infinite;
         }
-        
+
         .star:nth-child(odd) {
             animation-duration: 4s;
             background: #b967db;
         }
-        
+
         .star:nth-child(3n) {
             animation-duration: 5s;
             background: #ff6b9d;
         }
-        
+
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.5); }
         }
-        
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
-        
+
         @keyframes glow-pulse {
-            0%, 100% { 
+            0%, 100% {
                 text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff;
                 filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.5));
             }
-            50% { 
+            50% {
                 text-shadow: 0 0 30px #b967db, 0 0 60px #b967db, 0 0 90px #b967db;
                 filter: drop-shadow(0 0 50px rgba(185, 103, 219, 0.8));
             }
         }
-        
+
         @keyframes color-shift {
             0% { color: #00d9ff; }
             25% { color: #b967db; }
@@ -79,12 +79,37 @@
             75% { color: #00ff88; }
             100% { color: #00d9ff; }
         }
-        
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
-        
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 217, 255, 0.15);
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            color: #00d9ff;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(185, 103, 219, 0.25);
+            border-color: rgba(185, 103, 219, 0.6);
+            transform: scale(1.05);
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -95,7 +120,7 @@
             text-align: center;
             position: relative;
         }
-        
+
         .hero h1 {
             font-family: 'Orbitron', monospace;
             font-size: clamp(3rem, 8vw, 8rem);
@@ -109,19 +134,19 @@
             -webkit-text-fill-color: transparent;
             animation: glow-pulse 3s infinite, gradient-shift 6s infinite;
         }
-        
+
         @keyframes gradient-shift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        
+
         .hero .subtitle {
             font-size: clamp(1.2rem, 3vw, 2rem);
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: color-shift 4s infinite;
         }
-        
+
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -131,11 +156,11 @@
             opacity: 0.7;
             transition: opacity 0.3s;
         }
-        
+
         .scroll-indicator:hover {
             opacity: 1;
         }
-        
+
         /* Content Sections */
         .section {
             min-height: 100vh;
@@ -149,12 +174,12 @@
             transform: translateY(50px);
             transition: all 0.8s ease;
         }
-        
+
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .section h2 {
             font-family: 'Orbitron', monospace;
             font-size: clamp(2rem, 5vw, 4rem);
@@ -167,7 +192,7 @@
             -webkit-text-fill-color: transparent;
             animation: gradient-shift 3s infinite;
         }
-        
+
         .section p, .section li {
             font-size: clamp(1rem, 2vw, 1.3rem);
             margin-bottom: 1.5rem;
@@ -176,7 +201,7 @@
             margin-right: auto;
             text-align: center;
         }
-        
+
         /* Glassmorphism Cards */
         .card {
             background: rgba(0, 217, 255, 0.1);
@@ -190,7 +215,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .card::before {
             content: '';
             position: absolute;
@@ -201,17 +226,17 @@
             background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
             transition: left 0.6s;
         }
-        
+
         .card:hover::before {
             left: 100%;
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
             border-color: rgba(185, 103, 219, 0.4);
             box-shadow: 0 12px 48px rgba(185, 103, 219, 0.2);
         }
-        
+
         /* Tech Stack Grid */
         .tech-grid {
             display: grid;
@@ -219,7 +244,7 @@
             gap: 2rem;
             margin: 3rem 0;
         }
-        
+
         .tech-item {
             background: rgba(185, 103, 219, 0.1);
             border: 1px solid rgba(185, 103, 219, 0.3);
@@ -227,19 +252,19 @@
             padding: 1.5rem;
             transition: all 0.3s ease;
         }
-        
+
         .tech-item:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(185, 103, 219, 0.3);
         }
-        
+
         .tech-item h3 {
             color: #ff6b9d;
             font-family: 'Orbitron', monospace;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-        
+
         /* Code Block Styling */
         .code-block {
             background: rgba(0, 0, 0, 0.6);
@@ -252,7 +277,7 @@
             overflow-x: auto;
             position: relative;
         }
-        
+
         .code-block::before {
             content: 'Python';
             position: absolute;
@@ -265,7 +290,7 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
+
         /* Interactive Buttons */
         .glow-button {
             background: linear-gradient(45deg, #00d9ff, #b967db);
@@ -284,7 +309,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .glow-button::before {
             content: '';
             position: absolute;
@@ -295,22 +320,22 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.6s;
         }
-        
+
         .glow-button:hover::before {
             left: 100%;
         }
-        
+
         .glow-button:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
         }
-        
+
         /* Timeline */
         .timeline {
             position: relative;
             padding: 2rem 0;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -320,12 +345,12 @@
             height: 100%;
             background: linear-gradient(to bottom, #00d9ff, #b967db, #ff6b9d);
         }
-        
+
         .timeline-item {
             margin: 2rem 0;
             position: relative;
         }
-        
+
         .timeline-content {
             background: rgba(0, 217, 255, 0.1);
             border-radius: 15px;
@@ -333,11 +358,11 @@
             width: 45%;
             border: 1px solid rgba(0, 217, 255, 0.3);
         }
-        
+
         .timeline-item:nth-child(odd) .timeline-content {
             margin-left: auto;
         }
-        
+
         .timeline-dot {
             position: absolute;
             left: 50%;
@@ -349,7 +374,7 @@
             border-radius: 50%;
             box-shadow: 0 0 20px #ff6b9d;
         }
-        
+
         /* Media Upload Areas */
         .media-placeholder {
             background: rgba(0, 0, 0, 0.4);
@@ -361,42 +386,51 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .media-placeholder:hover {
             border-color: rgba(185, 103, 219, 0.8);
             background: rgba(185, 103, 219, 0.1);
         }
-        
+
         .media-placeholder i {
             font-size: 3rem;
             margin-bottom: 1rem;
             opacity: 0.6;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .timeline::before {
                 left: 20px;
             }
-            
+
             .timeline-content {
                 width: calc(100% - 40px);
                 margin-left: 40px;
             }
-            
+
             .timeline-dot {
                 left: 20px;
             }
-            
+
             .tech-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .section {
                 padding: 60px 15px;
             }
         }
-        
+
+        @media (max-width: 480px) {
+            .lang-toggle {
+                top: 12px;
+                right: 12px;
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+        }
+
         /* Particle Effects */
         .particle {
             position: absolute;
@@ -407,7 +441,7 @@
             pointer-events: none;
             animation: particle-float 6s infinite linear;
         }
-        
+
         @keyframes particle-float {
             0% {
                 opacity: 0;
@@ -460,77 +494,95 @@
 <body>
     <!-- Animated Background -->
     <div class="stars-container" id="stars"></div>
-    
+
+    <button class="lang-toggle" id="lang-toggle" aria-label="Switch language / Wissel taal">EN</button>
+
     <!-- Hero Section -->
     <section class="hero">
         <h1>HIGHSCORE GAMING BOT</h1>
-        <div class="subtitle">From Trucking to Tech - Built with AI in 3 Months</div>
+        <div class="subtitle" data-en="From Trucking to Tech — 12 Months of Building with AI">Van Trucker tot Developer — 12 Maanden Bouwen met AI</div>
         <div class="scroll-indicator" onclick="document.getElementById('journey').scrollIntoView()">
             ⬇️
         </div>
     </section>
-    
+
     <!-- The Journey -->
     <section class="section" id="journey">
-        <h2>The Journey</h2>
+        <h2 data-en="The Journey">Het Traject</h2>
         <div class="card">
-            <p>Als vrachtwagenchauffeur had ik geen programmeer achtergrond. Geen diploma, geen bootcamp - alleen de drive om iets te bouwen. Met AI als co-pilot heb ik in 3 maanden een complete gaming platform ontwikkeld die echte crypto rewards uitbetaalt.</p>
-            <p>Waar traditionele developers jaren over zouden doen, bewees ik dat AI development democratiseert. Niet door het denken over te nemen, maar door een krachtige partner te zijn in het leerproces.</p>
+            <p data-en="As a truck driver, I had no programming background. No degree, no bootcamp — just the drive to build something. I started with ChatGPT, copying code by hand into PythonAnywhere: one game, one leaderboard, and days to weeks per feature. 12 months later, AI is still my co-pilot — now Claude Code inside VS Code — and that same workflow has become dozens of times faster.">Als vrachtwagenchauffeur had ik geen programmeer achtergrond. Geen diploma, geen bootcamp - alleen de drive om iets te bouwen. Ik begon met ChatGPT en kopieerde code handmatig naar PythonAnywhere: één game, één leaderboard, en dagen tot weken per feature. Inmiddels werk ik 12 maanden met AI als co-pilot — nu via Claude Code in VS Code — en is diezelfde workflow tientallen keren sneller geworden.</p>
+            <p data-en="Where traditional developers would take years, I proved that AI democratizes development. Not by taking over the thinking, but by being a powerful partner in the learning process — one that grew right along with me.">Waar traditionele developers jaren over zouden doen, bewees ik dat AI development democratiseert. Niet door het denken over te nemen, maar door een krachtige partner te zijn in het leerproces — een partner die met mij is meegegroeid.</p>
         </div>
-        
+
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Week 1-2: The Vision</h3>
-                    <p>Gaming communities wilden echte rewards, maar tournaments waren chaotisch en handmatig. Ik zag de kans om dit te automatiseren met blockchain payouts.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Week 3-6: Learning by Breaking</h3>
-                    <p>Unity games die geen scores doorstuurden. Database connections die faalden. AI assistants die bleven dromen over verkeerde oplossingen. Elke crash was een les.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Week 7-10: Technical Breakthroughs</h3>
-                    <p>Flask server werkend. Blockchain payouts live. Real-time leaderboards. Async job recovery. Van frustratie naar doorbraken.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Week 11-12: Production Ready</h3>
-                    <p>Complete ecosystem: Unity games → Flask API → SQL Database → Telegram Bot → Blockchain. Échte users, échte tournaments, échte payouts.</p>
+                    <h3 data-en="Week 1-2: The Vision">Week 1-2: Het Idee</h3>
+                    <p data-en="Gaming communities wanted real rewards, but tournaments were chaotic and manual. I saw the opportunity to automate this with blockchain payouts.">Gaming communities wilden echte rewards, maar tournaments waren chaotisch en handmatig. Ik zag de kans om dit te automatiseren met blockchain payouts.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Maand 4-5: Platform Expansion</h3>
-                    <p>Van één bot naar een compleet platform: een Telegram Mini App als frontend, meerdere Unity WebGL games, en een eigen FastAPI WebSocket-server voor real-time PvP matches.</p>
+                    <h3 data-en="Week 3-6: Learning by Breaking">Week 3-6: Leren door te Breken</h3>
+                    <p data-en="Unity games that weren't sending scores. Database connections that failed. AI assistants stuck dreaming up the wrong solutions. Every crash was a lesson.">Unity games die geen scores doorstuurden. Database connections die faalden. AI assistants die bleven dromen over verkeerde oplossingen. Elke crash was een les.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Maand 6: Eigen Infrastructuur</h3>
-                    <p>Verhuizing van PythonAnywhere en Render naar een eigen Hetzner VPS. CI/CD via GitHub Actions, systemd services, en volledige controle over de productieomgeving.</p>
+                    <h3 data-en="Week 7-10: Technical Breakthroughs">Week 7-10: Technische Doorbraken</h3>
+                    <p data-en="Flask server working. Blockchain payouts live. Real-time leaderboards. Async job recovery. From frustration to breakthroughs.">Flask server werkend. Blockchain payouts live. Real-time leaderboards. Async job recovery. Van frustratie naar doorbraken.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Maand 6: Security Incident</h3>
-                    <p>Een gelekte bot-token werd binnen uren gekaapt door een externe poller. Secrets geroteerd, alles naar environment variables verplaatst, SSH gehard met fail2ban. Onder druk een productie-incident oplossen — en de infrastructuur er sterker uit laten komen.</p>
+                    <h3 data-en="Week 11-12: Production Ready">Week 11-12: Productie-Klaar</h3>
+                    <p data-en="Complete ecosystem: Unity games → Flask API → SQL Database → Telegram Bot → Blockchain. Real users, real tournaments, real payouts.">Complete ecosystem: Unity games → Flask API → SQL Database → Telegram Bot → Blockchain. Échte users, échte tournaments, échte payouts.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 data-en="Month 4-6: Platform Expansion">Maand 4-6: Platform Expansion</h3>
+                    <p data-en="From a single bot to a full platform: a Telegram Mini App as the frontend, multiple Unity WebGL games, and my own FastAPI WebSocket server for real-time PvP matches.">Van één bot naar een compleet platform: een Telegram Mini App als frontend, meerdere Unity WebGL games, en een eigen FastAPI WebSocket-server voor real-time PvP matches.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 data-en="Month 7-9: More Games, More Range">Maand 7-9: Meer Games, Meer Diversiteit</h3>
+                    <p data-en="Bought several games on CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Buddy) and modified them myself to send scores to my server. Also built a few games completely from scratch, like Claudiction and Spaces.">Een aantal games gekocht op CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Buddy) en zelf aangepast om scores naar mijn server te sturen. Daarnaast een paar games volledig zelf gebouwd, zoals Claudiction en Spaces.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 data-en="Month 9-10: Own Infrastructure">Maand 9-10: Eigen Infrastructuur</h3>
+                    <p data-en="Moved from PythonAnywhere and Render to my own Hetzner VPS. CI/CD via GitHub Actions, systemd services, and full control over the production environment.">Verhuizing van PythonAnywhere en Render naar een eigen Hetzner VPS. CI/CD via GitHub Actions, systemd services, en volledige controle over de productieomgeving.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 data-en="Month 10-11: Security Incident">Maand 10-11: Security Incident</h3>
+                    <p data-en="A leaked bot token was hijacked within hours by an external poller. Rotated all secrets, moved everything to environment variables, hardened SSH with fail2ban. Solving a production incident under pressure — and coming out with stronger infrastructure.">Een gelekte bot-token werd binnen uren gekaapt door een externe poller. Secrets geroteerd, alles naar environment variables verplaatst, SSH gehard met fail2ban. Onder druk een productie-incident oplossen — en de infrastructuur er sterker uit laten komen.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 data-en="Month 11-12: Anti-Cheat Overhaul (ongoing)">Maand 11-12: Anti-Cheat Overhaul (lopend)</h3>
+                    <p data-en="The client used to send its own score — easy to fake. Now each game runs server-side replay validation: the server replays the session itself and determines the real score. Migrated one game at a time — still the main work in progress today.">De client stuurde eerst zelf de score — makkelijk te vervalsen. Nu draait er per game server-side replay-validatie: de server speelt de sessie na en bepaalt de échte score. Game voor game gemigreerd, dit is nog steeds het huidige hoofdwerk.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -539,78 +591,78 @@
 
     <!-- How I Work -->
     <section class="section">
-        <h2>Hoe Ik Werk</h2>
+        <h2 data-en="How I Work">Hoe Ik Werk</h2>
 
         <div class="card">
-            <p>Het grootste deel van het werk zit niet in de features — het zit in de opzet. Bij <strong>De Paarse Dop</strong>, een voorraadbeheer-app die ik als gunst bouwde voor een brouwerij, was ik langer bezig met de architectuur, de deploy pipeline en de database-structuur dan met de uiteindelijke site zelf.</p>
-            <p>Maar zodra die fundamenten staan — automatische deploys, duidelijke environment configuratie, een simpele git-workflow — wordt itereren triviaal. Dan kan ik features toevoegen of bugs fixen vanaf bijna elke plek, zonder de hele setup opnieuw te hoeven doordenken.</p>
+            <p data-en="Most of the work isn't in the features — it's in the setup. With <strong>De Paarse Dop</strong>, an inventory-management app I built as a favor for a brewery, I spent longer on the architecture, the deploy pipeline and the database structure than on the actual site itself.">Het grootste deel van het werk zit niet in de features — het zit in de opzet. Bij <strong>De Paarse Dop</strong>, een voorraadbeheer-app die ik als gunst bouwde voor een brouwerij, was ik langer bezig met de architectuur, de deploy pipeline en de database-structuur dan met de uiteindelijke site zelf.</p>
+            <p data-en="But once those foundations are in place — automatic deploys, clear environment configuration, a simple git workflow — iterating becomes trivial. Then I can add features or fix bugs from almost anywhere, without having to rethink the whole setup.">Maar zodra die fundamenten staan — automatische deploys, duidelijke environment configuratie, een simpele git-workflow — wordt itereren triviaal. Dan kan ik features toevoegen of bugs fixen vanaf bijna elke plek, zonder de hele setup opnieuw te hoeven doordenken.</p>
         </div>
 
-        <div class="code-block">
+        <div class="code-block" data-en="Local changes → git push → GitHub Actions / GitHub Pages → Live">
 Lokaal wijzigen → git push → GitHub Actions / GitHub Pages → Live
         </div>
 
         <div class="tech-grid">
             <div class="tech-item">
-                <h3>AI als Co-Pilot</h3>
-                <p>Niet als vervanging van het denkwerk, maar als partner die sneller iteraties mogelijk maakt — vooral bij het verkennen van onbekende technologieën zoals blockchain-integraties en WebSockets.</p>
+                <h3 data-en="AI as Co-Pilot">AI als Co-Pilot</h3>
+                <p data-en="Started with ChatGPT: copying and pasting code by hand into PythonAnywhere, days to weeks per feature. Now I use Claude Code inside VS Code — same AI-driven approach, but a workflow that's dozens of times faster.">Begonnen met ChatGPT: code handmatig kopiëren en plakken naar PythonAnywhere, dagen tot weken per feature. Nu gebruik ik Claude Code in VS Code — dezelfde AI-aanpak, maar een workflow die tientallen keren sneller is.</p>
             </div>
             <div class="tech-item">
-                <h3>Investeren in Fundamenten</h3>
-                <p>Goede CI/CD, secrets in environment variables in plaats van hardcoded, en een duidelijke deploy-flow zorgen dat latere wijzigingen goedkoop blijven.</p>
+                <h3 data-en="Investing in Foundations">Investeren in Fundamenten</h3>
+                <p data-en="Good CI/CD, secrets in environment variables instead of hardcoded, and a clear deploy flow keep future changes cheap.">Goede CI/CD, secrets in environment variables in plaats van hardcoded, en een duidelijke deploy-flow zorgen dat latere wijzigingen goedkoop blijven.</p>
             </div>
         </div>
     </section>
 
     <!-- Technical Deep Dive -->
     <section class="section">
-        <h2>Technical Architecture</h2>
-        
+        <h2 data-en="Technical Architecture">Technische Architectuur</h2>
+
         <div class="code-block">
 Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot → Blockchain
         </div>
-        
+
         <div class="tech-grid">
             <div class="tech-item">
                 <h3>Backend Mastery</h3>
                 <ul>
-                    <li>Python Telegram Bot API voor real-time messaging</li>
-                    <li>Flask server op PythonAnywhere voor score processing</li>
-                    <li>SQL database met geoptimaliseerde queries</li>
-                    <li>Async job scheduling voor automated tournaments</li>
+                    <li data-en="Python Telegram Bot API for real-time messaging">Python Telegram Bot API voor real-time messaging</li>
+                    <li data-en="Flask server on my own Hetzner VPS for score processing">Flask server op een eigen Hetzner VPS voor score processing</li>
+                    <li data-en="SQL database with optimized queries">SQL database met geoptimaliseerde queries</li>
+                    <li data-en="Async job scheduling for automated tournaments">Async job scheduling voor automated tournaments</li>
                     <li>Comprehensive error handling & recovery systems</li>
                 </ul>
             </div>
-            
+
             <div class="tech-item">
                 <h3>Blockchain Integration</h3>
                 <ul>
                     <li>TON & Solana network support</li>
                     <li>Automated wallet validation</li>
-                    <li>Minimum hold requirements voor eligibility</li>
-                    <li>Smart payout distribution algoritmes</li>
+                    <li data-en="Minimum hold requirements for eligibility">Minimum hold requirements voor eligibility</li>
+                    <li data-en="Smart payout distribution algorithms">Smart payout distribution algoritmes</li>
                     <li>Multi-token prize pools</li>
                 </ul>
             </div>
-            
+
             <div class="tech-item">
                 <h3>Game Development</h3>
                 <ul>
-                    <li>Unity WebGL games met HTTP score submission</li>
-                    <li>Anti-cheat validation systems</li>
+                    <li data-en="Unity WebGL games with HTTP score submission">Unity WebGL games met HTTP score submission</li>
+                    <li data-en="Server-side replay anti-cheat, rolled out game by game">Server-side replay anti-cheat, game voor game uitgerold</li>
                     <li>Real-time leaderboard synchronization</li>
                     <li>Cross-platform deployment</li>
                     <li>Performance optimization</li>
                 </ul>
             </div>
-            
+
             <div class="tech-item">
                 <h3>Production Infrastructure</h3>
                 <ul>
-                    <li>PythonAnywhere deployment</li>
-                    <li>Database migrations voor Telegram group upgrades</li>
-                    <li>Job recovery na server crashes</li>
-                    <li>Rate limiting voor blockchain RPC calls</li>
+                    <li>Hetzner VPS deployment via GitHub Actions</li>
+                    <li data-en="Database migrations for Telegram group upgrades">Database migrations voor Telegram group upgrades</li>
+                    <li data-en="Job recovery after server crashes">Job recovery na server crashes</li>
+                    <li data-en="Rate limiting for blockchain RPC calls">Rate limiting voor blockchain RPC calls</li>
                     <li>Monitoring & logging systems</li>
                 </ul>
             </div>
@@ -619,153 +671,174 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
     <!-- Other Projects -->
     <section class="section">
-        <h2>Andere Projecten</h2>
+        <h2 data-en="Other Projects">Andere Projecten</h2>
 
         <div class="card">
-            <h3>De Paarse Dop — Voorraadbeheer voor een Brouwerij</h3>
-            <p>Een Flask-applicatie die ik als gunst bouwde: volledig in het Nederlands, met login voor een vaste groep gebruikers, categorieën en items bijhouden, en een activiteitenlog die elke mutatie leesbaar samenvat. Een receptenmodule berekent live of een recept haalbaar is op basis van de huidige voorraad.</p>
-            <p>Geen open registratie, automatische dagelijkse backups, en een deploy-flow via GitHub Desktop naar PythonAnywhere. Een heel ander domein dan gaming, maar dezelfde aanpak: eerst de fundamenten goed neerzetten.</p>
+            <h3 data-en="De Paarse Dop — Inventory Management for a Brewery">De Paarse Dop — Voorraadbeheer voor een Brouwerij</h3>
+            <p data-en="A Flask application I built as a favor: fully in Dutch, with login for a fixed group of users, categories and items to track, and an activity log that summarizes every change in plain language. A recipe module calculates live whether a recipe is feasible based on current stock.">Een Flask-applicatie die ik als gunst bouwde: volledig in het Nederlands, met login voor een vaste groep gebruikers, categorieën en items bijhouden, en een activiteitenlog die elke mutatie leesbaar samenvat. Een receptenmodule berekent live of een recept haalbaar is op basis van de huidige voorraad.</p>
+            <p data-en="No open registration, automatic daily backups, and a deploy flow via GitHub Desktop to PythonAnywhere. A completely different domain from gaming, but the same approach: get the foundations right first.">Geen open registratie, automatische dagelijkse backups, en een deploy-flow via GitHub Desktop naar PythonAnywhere. Een heel ander domein dan gaming, maar dezelfde aanpak: eerst de fundamenten goed neerzetten.</p>
         </div>
 
         <div class="tech-grid">
             <div class="tech-item">
                 <h3>Backend</h3>
                 <ul>
-                    <li>Flask met SQLAlchemy, zes gekoppelde modellen</li>
-                    <li>Flask-Login authenticatie met vaste gebruikerslijst</li>
-                    <li>Cascading deletes met behoud van historiek in het activiteitenlog</li>
+                    <li data-en="Flask with SQLAlchemy, six linked models">Flask met SQLAlchemy, zes gekoppelde modellen</li>
+                    <li data-en="Flask-Login authentication with a fixed user list">Flask-Login authenticatie met vaste gebruikerslijst</li>
+                    <li data-en="Cascading deletes that preserve history in the activity log">Cascading deletes met behoud van historiek in het activiteitenlog</li>
                 </ul>
             </div>
             <div class="tech-item">
-                <h3>Features</h3>
+                <h3 data-en="Features">Features</h3>
                 <ul>
-                    <li>Live tekorten-berekening per recept</li>
-                    <li>Automatische SQLite-backups met 7-dagen retentie</li>
-                    <li>Volledig Nederlandstalige UI voor de eindgebruiker</li>
+                    <li data-en="Live shortage calculation per recipe">Live tekorten-berekening per recept</li>
+                    <li data-en="Automatic SQLite backups with 7-day retention">Automatische SQLite-backups met 7-dagen retentie</li>
+                    <li data-en="Fully Dutch-language UI for the end user">Volledig Nederlandstalige UI voor de eindgebruiker</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Machine Learning -->
+    <section class="section">
+        <h2 data-en="Teaching Bots to Play">Bots Leren Spelen</h2>
+
+        <div class="card">
+            <p data-en="Alongside the platform work, I experiment with machine learning: training bots that learn to play my own games, using evolutionary algorithms (CMA-ES) that train through the same deterministic replay validation the anti-cheat system uses to check scores. The training jobs run as separate systemd services on the VPS, with auto-recovery after a crash or restart.">Naast de platformkant experimenteer ik met machine learning: bots trainen die mijn eigen games leren spelen, met evolutionaire algoritmes (CMA-ES) die via dezelfde deterministische replay-validatie trainen als de anti-cheat gebruikt om scores te checken. De trainingen draaien als losse systemd-services op de VPS, met auto-recovery na een crash of herstart.</p>
+            <p data-en="It also produces a fun feature for players: &quot;beat the bot&quot; — a benchmark run that shows how well a trained model plays a level. Purely experimental work, but if I'm honest, it's secretly my favorite part to build.">Het levert ook een leuke feature op voor spelers: "versla de bot" — een benchmark-run die laat zien hoe goed een getraind model een level speelt. Puur experimenteel werk, maar ik vind dit stiekem het leukste deel om aan te bouwen.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3 data-en="Evolutionary Training Strategy">Evolutionaire Trainingsstrategie</h3>
+                <p data-en="CMA-ES and (1+λ)-ES optimize action sequences against a shaped reward, with proven bit-exact determinism between training and replay.">CMA-ES en (1+λ)-ES optimaliseren actie-reeksen tegen een shaped reward, met bewezen bit-exact determinisme tussen training en replay.</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-en="Persistent Infrastructure">Persistente Infrastructuur</h3>
+                <p data-en="Each training run is a systemd template, decoupled from the bot's cgroup, with its own crash recovery and auto-restart after a server reboot.">Elke training draait als systemd-template, losgekoppeld van de bot-cgroup, met eigen crash-recovery en auto-restart na een server-reboot.</p>
             </div>
         </div>
     </section>
 
     <!-- Problem Solving -->
     <section class="section">
-        <h2>Real-World Problem Solving</h2>
-        
+        <h2 data-en="Real-World Problem Solving">Problemen Oplossen in de Praktijk</h2>
+
         <div class="card">
             <h3>The Debugging Journey</h3>
-            <p>Elke developer kent dit gevoel: dagen vastzitten op een "simpel" probleem. Verouderde Solana imports die conflicteerden met Telegram libraries. Unity games die scores niet doorstuurden door verkeerde HTTP headers. AI assistants die in loops bleven hangen op verkeerde oplossingen.</p>
-            <p>De echte skill zit in het herkennen wanneer je een andere aanpak moet proberen, en de doorzettingsvermogen om door te gaan tot het werkt.</p>
+            <p data-en="Every developer knows this feeling: stuck for days on a &quot;simple&quot; problem. Outdated Solana imports conflicting with Telegram libraries. Unity games that weren't sending scores because of the wrong HTTP headers. AI assistants stuck in loops on the wrong solutions.">Elke developer kent dit gevoel: dagen vastzitten op een "simpel" probleem. Verouderde Solana imports die conflicteerden met Telegram libraries. Unity games die scores niet doorstuurden door verkeerde HTTP headers. AI assistants die in loops bleven hangen op verkeerde oplossingen.</p>
+            <p data-en="The real skill is recognizing when you need to try a different approach, and the persistence to keep going until it works.">De echte skill zit in het herkennen wanneer je een andere aanpak moet proberen, en de doorzettingsvermogen om door te gaan tot het werkt.</p>
         </div>
-        
+
         <div class="media-placeholder">
             <i class="fas fa-image"></i>
-            <p>Screenshots van debugging sessions, error logs, of breakthrough moments</p>
+            <p data-en="Screenshots of debugging sessions, error logs, or breakthrough moments">Screenshots van debugging sessions, error logs, of breakthrough moments</p>
         </div>
-        
+
         <div class="card">
-            <h3>Production Challenges Opgelost</h3>
+            <h3 data-en="Production Challenges Solved">Production Challenges Opgelost</h3>
             <ul>
-                <li><strong>Concurrent Gaming:</strong> Handling multiple simultaneous tournaments zonder database conflicts</li>
-                <li><strong>Chat Migrations:</strong> Automatic database migration wanneer Telegram groepen upgraden</li>
-                <li><strong>Job Recovery:</strong> Robust system recovery na server crashes of restarts</li>
-                <li><strong>Rate Limiting:</strong> Smart caching voor blockchain RPC calls om costs te minimaliseren</li>
-                <li><strong>Error Resilience:</strong> Comprehensive exception handling zonder user experience te verstoren</li>
+                <li data-en="<strong>Concurrent Gaming:</strong> Handling multiple simultaneous tournaments without database conflicts"><strong>Concurrent Gaming:</strong> Handling multiple simultaneous tournaments zonder database conflicts</li>
+                <li data-en="<strong>Chat Migrations:</strong> Automatic database migration when Telegram groups upgrade"><strong>Chat Migrations:</strong> Automatic database migration wanneer Telegram groepen upgraden</li>
+                <li data-en="<strong>Job Recovery:</strong> Robust system recovery after server crashes or restarts"><strong>Job Recovery:</strong> Robust system recovery na server crashes of restarts</li>
+                <li data-en="<strong>Rate Limiting:</strong> Smart caching for blockchain RPC calls to minimize costs"><strong>Rate Limiting:</strong> Smart caching voor blockchain RPC calls om costs te minimaliseren</li>
+                <li data-en="<strong>Error Resilience:</strong> Comprehensive exception handling without disrupting the user experience"><strong>Error Resilience:</strong> Comprehensive exception handling zonder user experience te verstoren</li>
             </ul>
         </div>
     </section>
-    
+
     <!-- Live Demo -->
     <section class="section">
-        <h2>Live in Action</h2>
-        
+        <h2 data-en="Live in Action">Live in Actie</h2>
+
         <div class="media-placeholder">
             <i class="fas fa-play-circle"></i>
-            <p>Video demo van een complete tournament: start → users playing → real-time leaderboard → automatic payouts</p>
+            <p data-en="Video demo of a complete tournament: start → users playing → real-time leaderboard → automatic payouts">Video demo van een complete tournament: start → users playing → real-time leaderboard → automatic payouts</p>
         </div>
-        
+
         <div class="tech-grid">
             <div class="card">
                 <h3>Tournament Flow</h3>
                 <div class="media-placeholder">
                     <i class="fas fa-trophy"></i>
-                    <p>Screenshots van Telegram commands, tournament scheduling, en leaderboard updates</p>
+                    <p data-en="Screenshots of Telegram commands, tournament scheduling, and leaderboard updates">Screenshots van Telegram commands, tournament scheduling, en leaderboard updates</p>
                 </div>
             </div>
-            
+
             <div class="card">
                 <h3>Blockchain Payouts</h3>
                 <div class="media-placeholder">
                     <i class="fas fa-coins"></i>
-                    <p>Transaction screenshots, wallet integrations, en automated prize distribution</p>
+                    <p data-en="Transaction screenshots, wallet integrations, and automated prize distribution">Transaction screenshots, wallet integrations, en automated prize distribution</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="card">
             <h3>User Experience</h3>
-            <p>Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards.</p>
+            <p data-en="Players can play games directly in Telegram, scores update in real time, and winners automatically receive crypto payouts. No manual work, no errors, just seamless gaming with real rewards.">Spelers kunnen games spelen direct in Telegram, scores worden real-time geüpdatet, en winners ontvangen automatisch crypto payouts. Geen manual work, geen errors, gewoon seamless gaming met echte rewards.</p>
         </div>
     </section>
-    
+
     <!-- What's Next -->
     <section class="section">
-        <h2>What This Proves</h2>
-        
+        <h2 data-en="What This Proves">Wat Dit Bewijst</h2>
+
         <div class="card">
-            <p>Deze bot toont meer dan technical skills. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
-            <p>Van concept tot productie in 3 maanden. Van vrachtwagenchauffeur tot developer die blockchain integrations bouwt. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
+            <p data-en="This bot proves more than technical skill. It proves I can identify complex problems, architect technical solutions, and build complete systems that people actually use.">Deze bot toont meer dan technical skills. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
+            <p data-en="From concept to production in 12 months — from copy-pasting with ChatGPT to a Claude Code workflow that's dozens of times faster. From truck driver to developer building blockchain integrations and server-side anti-cheat. AI made it possible, but the thinking, the persistence, and the problem-solving — that came from me.">Van concept tot productie in 12 maanden — van copy-paste met ChatGPT tot een workflow met Claude Code die tientallen keren sneller is. Van vrachtwagenchauffeur tot developer die blockchain-integraties en server-side anti-cheat bouwt. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
         </div>
-        
+
         <div class="tech-grid">
             <div class="card">
                 <h3>Business Logic</h3>
-                <p>Tournament scheduling, prize distribution algoritmes, anti-cheat systems, user management - complete product thinking.</p>
+                <p data-en="Tournament scheduling, prize distribution algorithms, anti-cheat systems, user management — complete product thinking.">Toernooiplanning, prijsverdelingsalgoritmes, anti-cheatsystemen, gebruikersbeheer — volledig productdenken.</p>
             </div>
-            
+
             <div class="card">
                 <h3>Technical Depth</h3>
-                <p>Full-stack development, database design, blockchain integration, async programming, production deployment.</p>
+                <p data-en="Full-stack development, database design, blockchain integration, async programming, production deployment.">Full-stack ontwikkeling, database-ontwerp, blockchain-integratie, asynchrone programmering, productie-deployment.</p>
             </div>
-            
+
             <div class="card">
                 <h3>Problem Solving</h3>
-                <p>Debug complex issues, understand system interactions, build robust error handling, optimize performance.</p>
+                <p data-en="Debug complex issues, understand system interactions, build robust error handling, optimize performance.">Complexe problemen debuggen, systeem-interacties begrijpen, robuuste foutafhandeling bouwen, performance optimaliseren.</p>
             </div>
-            
+
             <div class="card">
                 <h3>Product Mindset</h3>
-                <p>User experience design, community building, growth planning, technical scalability considerations.</p>
+                <p data-en="User experience design, community building, growth planning, technical scalability considerations.">UX-ontwerp, community building, groeiplanning, technische schaalbaarheid overwegen.</p>
             </div>
         </div>
     </section>
-    
+
     <!-- Contact -->
     <section class="section">
-        <h2>Let's Build Something</h2>
-        
+        <h2 data-en="Let's Build Something">Laten We Iets Bouwen</h2>
+
         <div class="card">
-            <p>Ik zoek opportunities om mijn ontwikkeling voort te zetten. Of je nu een startup bent die een technical co-founder zoekt, of een bedrijf dat iemand wil die out-of-the-box denkt - ik ben geïnteresseerd in uitdagende projecten waar ik kan groeien.</p>
+            <p data-en="I'm looking for opportunities to keep growing as a developer. Whether you're a startup looking for a technical co-founder, or a company that wants someone who thinks outside the box — I'm interested in challenging projects where I can keep learning. Honestly, I just find all of this — the bot, the games, the infrastructure, training bots to play them — genuinely fun to work on, and that drive comes with me wherever I go.">Ik zoek opportunities om mijn ontwikkeling voort te zetten. Of je nu een startup bent die een technical co-founder zoekt, of een bedrijf dat iemand wil die out-of-the-box denkt - ik ben geïnteresseerd in uitdagende projecten waar ik kan groeien. Eerlijk gezegd vind ik dit allemaal — de bot, de games, de infrastructuur, bots trainen om ze te spelen — gewoon ontzettend leuk om te doen, en die drive neem ik overal mee naartoe.</p>
         </div>
-        
+
         <div class="contact-grid">
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
                 <p>jouw@email.com</p>
             </div>
-            
+
             <div class="contact-item">
                 <i class="fab fa-telegram"></i>
                 <h3>Telegram</h3>
                 <p>@jouwusername</p>
             </div>
-            
+
             <div class="contact-item">
                 <i class="fab fa-github"></i>
                 <h3>GitHub</h3>
                 <p>github.com/jouwusername</p>
             </div>
-            
+
             <div class="contact-item">
                 <i class="fas fa-robot"></i>
                 <h3>Live Bot</h3>
@@ -773,13 +846,13 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
             </div>
         </div>
     </section>
-    
+
     <script>
         // Create animated stars
         function createStars() {
             const container = document.getElementById('stars');
             const starCount = 100;
-            
+
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
@@ -789,7 +862,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
                 container.appendChild(star);
             }
         }
-        
+
         // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -801,36 +874,36 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         });
-        
+
         // Observe all sections
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
-        
+
         // Particle effects on mouse move
         let particles = [];
-        
+
         document.addEventListener('mousemove', (e) => {
             if (Math.random() > 0.9) {
                 createParticle(e.clientX, e.clientY);
             }
         });
-        
+
         function createParticle(x, y) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = x + 'px';
             particle.style.top = y + 'px';
             document.body.appendChild(particle);
-            
+
             setTimeout(() => {
                 particle.remove();
             }, 6000);
         }
-        
+
         // Initialize
         createStars();
-        
+
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -844,17 +917,42 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
                 }
             });
         });
-        
+
         // Add glow effect on card hover
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.boxShadow = '0 12px 48px rgba(0, 217, 255, 0.3)';
             });
-            
+
             card.addEventListener('mouseleave', function() {
                 this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
             });
         });
+
+        // Language toggle (NL default, EN via data-en attributes)
+        const langToggleBtn = document.getElementById('lang-toggle');
+        let currentLang = localStorage.getItem('site-lang') || 'nl';
+
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (lang === 'en') {
+                    if (el.dataset.nl === undefined) el.dataset.nl = el.innerHTML;
+                    el.innerHTML = el.dataset.en;
+                } else if (el.dataset.nl !== undefined) {
+                    el.innerHTML = el.dataset.nl;
+                }
+            });
+            document.documentElement.lang = lang;
+            langToggleBtn.textContent = lang === 'en' ? 'NL' : 'EN';
+            localStorage.setItem('site-lang', lang);
+            currentLang = lang;
+        }
+
+        langToggleBtn.addEventListener('click', () => {
+            applyLanguage(currentLang === 'en' ? 'nl' : 'en');
+        });
+
+        applyLanguage(currentLang);
     </script>
 </body>
 </html>
