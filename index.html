@@ -510,9 +510,58 @@
                 </div>
                 <div class="timeline-dot"></div>
             </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Maand 4-5: Platform Expansion</h3>
+                    <p>Van één bot naar een compleet platform: een Telegram Mini App als frontend, meerdere Unity WebGL games, en een eigen FastAPI WebSocket-server voor real-time PvP matches.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Maand 6: Eigen Infrastructuur</h3>
+                    <p>Verhuizing van PythonAnywhere en Render naar een eigen Hetzner VPS. CI/CD via GitHub Actions, systemd services, en volledige controle over de productieomgeving.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Maand 6: Security Incident</h3>
+                    <p>Een gelekte bot-token werd binnen uren gekaapt door een externe poller. Secrets geroteerd, alles naar environment variables verplaatst, SSH gehard met fail2ban. Onder druk een productie-incident oplossen — en de infrastructuur er sterker uit laten komen.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
         </div>
     </section>
-    
+
+    <!-- How I Work -->
+    <section class="section">
+        <h2>Hoe Ik Werk</h2>
+
+        <div class="card">
+            <p>Het grootste deel van het werk zit niet in de features — het zit in de opzet. Bij <strong>De Paarse Dop</strong>, een voorraadbeheer-app die ik als gunst bouwde voor een brouwerij, was ik langer bezig met de architectuur, de deploy pipeline en de database-structuur dan met de uiteindelijke site zelf.</p>
+            <p>Maar zodra die fundamenten staan — automatische deploys, duidelijke environment configuratie, een simpele git-workflow — wordt itereren triviaal. Dan kan ik features toevoegen of bugs fixen vanaf bijna elke plek, zonder de hele setup opnieuw te hoeven doordenken.</p>
+        </div>
+
+        <div class="code-block">
+Lokaal wijzigen → git push → GitHub Actions / GitHub Pages → Live
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3>AI als Co-Pilot</h3>
+                <p>Niet als vervanging van het denkwerk, maar als partner die sneller iteraties mogelijk maakt — vooral bij het verkennen van onbekende technologieën zoals blockchain-integraties en WebSockets.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Investeren in Fundamenten</h3>
+                <p>Goede CI/CD, secrets in environment variables in plaats van hardcoded, en een duidelijke deploy-flow zorgen dat latere wijzigingen goedkoop blijven.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Technical Deep Dive -->
     <section class="section">
         <h2>Technical Architecture</h2>
@@ -567,7 +616,37 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
             </div>
         </div>
     </section>
-    
+
+    <!-- Other Projects -->
+    <section class="section">
+        <h2>Andere Projecten</h2>
+
+        <div class="card">
+            <h3>De Paarse Dop — Voorraadbeheer voor een Brouwerij</h3>
+            <p>Een Flask-applicatie die ik als gunst bouwde: volledig in het Nederlands, met login voor een vaste groep gebruikers, categorieën en items bijhouden, en een activiteitenlog die elke mutatie leesbaar samenvat. Een receptenmodule berekent live of een recept haalbaar is op basis van de huidige voorraad.</p>
+            <p>Geen open registratie, automatische dagelijkse backups, en een deploy-flow via GitHub Desktop naar PythonAnywhere. Een heel ander domein dan gaming, maar dezelfde aanpak: eerst de fundamenten goed neerzetten.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3>Backend</h3>
+                <ul>
+                    <li>Flask met SQLAlchemy, zes gekoppelde modellen</li>
+                    <li>Flask-Login authenticatie met vaste gebruikerslijst</li>
+                    <li>Cascading deletes met behoud van historiek in het activiteitenlog</li>
+                </ul>
+            </div>
+            <div class="tech-item">
+                <h3>Features</h3>
+                <ul>
+                    <li>Live tekorten-berekening per recept</li>
+                    <li>Automatische SQLite-backups met 7-dagen retentie</li>
+                    <li>Volledig Nederlandstalige UI voor de eindgebruiker</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Problem Solving -->
     <section class="section">
         <h2>Real-World Problem Solving</h2>
