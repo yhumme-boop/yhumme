@@ -500,7 +500,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>HIGHSCORE GAMING BOT</h1>
-        <div class="subtitle" data-en="From Trucking to Tech — 12 Months of Building with AI">Van Trucker tot Developer — 12 Maanden Bouwen met AI</div>
+        <div class="subtitle" data-en="From Trucking to Tech — 12 Months of Solo Building with AI">Van Trucker tot Developer — 12 Maanden Solo Bouwen met AI</div>
         <div class="scroll-indicator" onclick="document.getElementById('journey').scrollIntoView()">
             ⬇️
         </div>
@@ -558,7 +558,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 data-en="Month 7-9: More Games, More Range">Maand 7-9: Meer Games, Meer Diversiteit</h3>
-                    <p data-en="Bought several games on CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Buddy) and modified them myself to send scores to my server. Also built a few games completely from scratch, like Claudiction and Spaces.">Een aantal games gekocht op CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Buddy) en zelf aangepast om scores naar mijn server te sturen. Daarnaast een paar games volledig zelf gebouwd, zoals Claudiction en Spaces.</p>
+                    <p data-en="Bought several games on CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Spaces) and rebuilt them to be server-authoritative: each game got its own deterministic simulation so the server can replay it bit-for-bit for anti-cheat. For Brick Breaker I also replaced the 3-ball game-over with an endless-balls mode, and I reskinned Ghosty into a new character: Buddy. I also designed and built five games completely from scratch: Highscore Heroes, Chart Retard, HSCdash, Claudiction and Honkmaster.">Een aantal games gekocht op CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Spaces) en herbouwd tot server-authoritative: elke game kreeg een eigen deterministische simulatie zodat de server 'm bit-identiek kan naspelen voor anti-cheat. Bij Brick Breaker verving ik ook het 3-ballen-game-over door een endless-ballen-modus, en Ghosty reskinde ik tot een nieuw personage: Buddy. Daarnaast vijf games volledig zelf ontworpen en gebouwd: Highscore Heroes, Chart Retard, HSCdash, Claudiction en Honkmaster.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -582,7 +582,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 data-en="Month 11-12: Anti-Cheat Overhaul (ongoing)">Maand 11-12: Anti-Cheat Overhaul (lopend)</h3>
-                    <p data-en="The client used to send its own score — easy to fake. Now each game runs server-side replay validation: the server replays the session itself and determines the real score. Migrated one game at a time — still the main work in progress today.">De client stuurde eerst zelf de score — makkelijk te vervalsen. Nu draait er per game server-side replay-validatie: de server speelt de sessie na en bepaalt de échte score. Game voor game gemigreerd, dit is nog steeds het huidige hoofdwerk.</p>
+                    <p data-en="The client used to send its own score — easy to fake. Now every game runs on its own deterministic fixed-point simulation (Q16.16, no floats) that the server can replay bit-for-bit — proven tick-for-tick identical between WebGL and native Linux builds. Migrated one game at a time — still the main work in progress today.">De client stuurde eerst zelf de score — makkelijk te vervalsen. Nu draait elke game op een eigen deterministische fixed-point simulatie (Q16.16, geen floats) die de server bit-identiek kan naspelen — bewezen tick voor tick gelijk tussen WebGL en Linux-native builds. Game voor game gemigreerd, dit is nog steeds het huidige hoofdwerk.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -649,7 +649,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
                 <h3>Game Development</h3>
                 <ul>
                     <li data-en="Unity WebGL games with HTTP score submission">Unity WebGL games met HTTP score submission</li>
-                    <li data-en="Server-side replay anti-cheat, rolled out game by game">Server-side replay anti-cheat, game voor game uitgerold</li>
+                    <li data-en="Self-built deterministic fixed-point engine (Q16.16) for bit-identical server-replay anti-cheat">Zelfgebouwde deterministische fixed-point engine (Q16.16) voor bit-identieke server-replay anti-cheat</li>
                     <li>Real-time leaderboard synchronization</li>
                     <li>Cross-platform deployment</li>
                     <li>Performance optimization</li>
@@ -665,6 +665,38 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
                     <li data-en="Rate limiting for blockchain RPC calls">Rate limiting voor blockchain RPC calls</li>
                     <li>Monitoring & logging systems</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games I Built -->
+    <section class="section">
+        <h2 data-en="Games I Built, Solo">Games Die Ik Solo Bouwde</h2>
+
+        <div class="card">
+            <p data-en="Five games I designed and built entirely myself in Unity — no team, no artists, no other developers. Just me and Claude as an AI partner, from concept to a working WebGL build.">Vijf games heb ik volledig zelf ontworpen en gebouwd in Unity — geen team, geen artists, geen andere developers. Alleen ik en Claude als AI-partner, van concept tot werkende WebGL-build.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3>Highscore Heroes</h3>
+                <p data-en="A Unity WebGL PvP fighting game inside a Telegram Mini App. Real-time multiplayer over WebSocket, a Budokai-style combo system with input buffering and animation-driven windows, matchmaking, and a rule-based AI opponent with four difficulty levels that steps in whenever no human opponent is available.">Unity WebGL PvP fighting game in een Telegram Mini App. Real-time multiplayer via WebSocket, een Budokai-stijl combo-systeem met input buffering en animatie-gestuurde windows, matchmaking, en een rule-based AI-tegenstander met vier moeilijkheidsgraden die inspringt zodra er geen menselijke tegenstander beschikbaar is.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Chart Retard</h3>
+                <p data-en="A satirical crypto trading simulator: candlestick charts, procedurally generated 'shitcoins', random market events that move the price. I handle all money as integers (nano-dollars) instead of floats — a precision problem every fintech-style app runs into — with a seeded simulation so the server can replay every run bit-for-bit.">Een satirische crypto-trading simulator: candlestick charts, procedureel gegenereerde 'shitcoins', random market events die de prijs beïnvloeden. Geld reken ik volledig in integers (nano-dollars) in plaats van floats — een precisieprobleem dat elke fintech-achtige app kent — met een seeded simulatie zodat de server elke run bit-identiek kan herspelen.</p>
+            </div>
+            <div class="tech-item">
+                <h3>HSCdash</h3>
+                <p data-en="A 3D endless runner with a neon aesthetic: a combo meter, coin and obstacle spawners, and visual effects like light tunnels and laser fans to sell the speed — running on the same deterministic fixed-point sim under the hood for server-side anti-cheat.">Een 3D endless runner met een neon-esthetiek: combo-meter, coin- en obstacle-spawners, en visuele effecten zoals light tunnels en laser fans om het tempo te laten voelen — met dezelfde deterministische fixed-point sim onder de motorkap voor server-side anti-cheat.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Claudiction</h3>
+                <p data-en="An arcade reflex game built around a timing bar: stopping at exactly the right moment determines your score. With a progression system and the same seeded-replay anti-cheat as the rest of the platform.">Een arcade reflex-game rond een timing-bar: precies op het juiste moment stoppen bepaalt je score. Met progressiesysteem en dezelfde seeded-replay anti-cheat als de rest van het platform.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Honkmaster</h3>
+                <p data-en="A Paint.io-style multiplayer game featuring Telegram's iconic Utya ducks: players move a duck around a canvas and paint territory, real-time over WebSocket. From the sticker I built a 16-frame spritesheet myself (8 directions × 2 swim poses, with a calculated tilt-and-offset for the bobbing effect), and a Python script I wrote generates 14 color variants from it automatically.">Een Paint.io-achtige multiplayer game met Telegram's bekende Utya-eendjes: spelers bewegen een eend over een canvas en kleuren territorium in, real-time via WebSocket. Van de sticker maakte ik zelf een spritesheet van 16 frames (8 richtingen × 2 zwemposes, met een berekende tilt en verschuiving voor het dobber-effect), en een eigen Python-script genereert daar automatisch 14 kleurvarianten uit.</p>
             </div>
         </div>
     </section>
@@ -704,7 +736,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
         <h2 data-en="Teaching Bots to Play">Bots Leren Spelen</h2>
 
         <div class="card">
-            <p data-en="Alongside the platform work, I experiment with machine learning: training bots that learn to play my own games, using evolutionary algorithms (CMA-ES) that train through the same deterministic replay validation the anti-cheat system uses to check scores. The training jobs run as separate systemd services on the VPS, with auto-recovery after a crash or restart.">Naast de platformkant experimenteer ik met machine learning: bots trainen die mijn eigen games leren spelen, met evolutionaire algoritmes (CMA-ES) die via dezelfde deterministische replay-validatie trainen als de anti-cheat gebruikt om scores te checken. De trainingen draaien als losse systemd-services op de VPS, met auto-recovery na een crash of herstart.</p>
+            <p data-en="Alongside the platform work, I experiment with machine learning: training bots that learn to play my own games, using Unity ML-Agents and my own evolutionary algorithms (CMA-ES), both trained directly on the same deterministic game binaries the anti-cheat uses to verify scores. The training jobs run as separate systemd services on the VPS, with auto-recovery after a crash or restart.">Naast de platformkant experimenteer ik met machine learning: bots trainen die mijn eigen games leren spelen, via Unity ML-Agents en eigen evolutionaire algoritmes (CMA-ES), beide getraind rechtstreeks op dezelfde deterministische game-binaries die de anti-cheat gebruikt om scores te verifiëren. De trainingen draaien als losse systemd-services op de VPS, met auto-recovery na een crash of herstart.</p>
             <p data-en="It also produces a fun feature for players: &quot;beat the bot&quot; — a benchmark run that shows how well a trained model plays a level. Purely experimental work, but if I'm honest, it's secretly my favorite part to build.">Het levert ook een leuke feature op voor spelers: "versla de bot" — een benchmark-run die laat zien hoe goed een getraind model een level speelt. Puur experimenteel werk, maar ik vind dit stiekem het leukste deel om aan te bouwen.</p>
         </div>
 
@@ -786,7 +818,7 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <p data-en="This bot proves more than technical skill. It proves I can identify complex problems, architect technical solutions, and build complete systems that people actually use.">Deze bot toont meer dan technical skills. Het bewijst dat ik complexe problemen kan identificeren, technische oplossingen kan architecturen, en complete systemen kan bouwen die mensen daadwerkelijk gebruiken.</p>
-            <p data-en="From concept to production in 12 months — from copy-pasting with ChatGPT to a Claude Code workflow that's dozens of times faster. From truck driver to developer building blockchain integrations and server-side anti-cheat. AI made it possible, but the thinking, the persistence, and the problem-solving — that came from me.">Van concept tot productie in 12 maanden — van copy-paste met ChatGPT tot een workflow met Claude Code die tientallen keren sneller is. Van vrachtwagenchauffeur tot developer die blockchain-integraties en server-side anti-cheat bouwt. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
+            <p data-en="From concept to production in 12 months — from copy-pasting with ChatGPT to a Claude Code workflow that's dozens of times faster. From truck driver to solo developer building five original games, blockchain integrations and server-side anti-cheat — no team, just me. AI made it possible, but the thinking, the persistence, and the problem-solving — that came from me.">Van concept tot productie in 12 maanden — van copy-paste met ChatGPT tot een workflow met Claude Code die tientallen keren sneller is. Van vrachtwagenchauffeur tot solo-developer die vijf eigen games, blockchain-integraties en server-side anti-cheat bouwt — geen team, alleen ik. AI maakte het mogelijk, maar het denken, de doorzettingsvermogen en het probleem oplossen - dat kwam van mij.</p>
         </div>
 
         <div class="tech-grid">
