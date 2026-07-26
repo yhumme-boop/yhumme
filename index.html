@@ -270,7 +270,7 @@
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid #00d9ff;
             border-radius: 10px;
-            padding: 1.5rem;
+            padding: 2.4rem 1.5rem 1.5rem 1.5rem;
             margin: 2rem 0;
             font-family: 'Courier New', monospace;
             color: #00ff88;
@@ -281,8 +281,8 @@
         .code-block::before {
             content: 'Python';
             position: absolute;
-            top: -10px;
-            left: 20px;
+            top: 10px;
+            left: 16px;
             background: #00d9ff;
             color: #0a0a0f;
             padding: 2px 10px;
@@ -510,15 +510,17 @@
     <section class="section" id="journey">
         <h2 data-en="The Journey">Het Traject</h2>
         <div class="card">
-            <p data-en="As a truck driver, I had no programming background. No degree, no bootcamp — just the drive to build something. I started with ChatGPT, copying code by hand into PythonAnywhere: one game, one leaderboard, and days to weeks per feature. 12 months later, AI is still my co-pilot — now Claude Code inside VS Code — and that same workflow has become dozens of times faster.">Als vrachtwagenchauffeur had ik geen programmeer achtergrond. Geen diploma, geen bootcamp - alleen de drive om iets te bouwen. Ik begon met ChatGPT en kopieerde code handmatig naar PythonAnywhere: één game, één leaderboard, en dagen tot weken per feature. Inmiddels werk ik 12 maanden met AI als co-pilot — nu via Claude Code in VS Code — en is diezelfde workflow tientallen keren sneller geworden.</p>
-            <p data-en="Where traditional developers would take years, I proved that AI democratizes development. Not by taking over the thinking, but by being a powerful partner in the learning process — one that grew right along with me.">Waar traditionele developers jaren over zouden doen, bewees ik dat AI development democratiseert. Niet door het denken over te nemen, maar door een krachtige partner te zijn in het leerproces — een partner die met mij is meegegroeid.</p>
+            <p data-en="More than 20 years ago I did 2 years of an ICT degree and never finished it — but it left me with some early programming and website-building experience. After that I became a truck driver. I've always loved gaming, still do, and always dreamed of making my own games — without years of formal training that felt out of reach, until AI suddenly made it possible.">Meer dan 20 jaar geleden deed ik 2 jaar een ICT-opleiding en heb die nooit afgemaakt — maar hield er wel wat vroege programmeer- en websitebouw-ervaring aan over. Daarna werd ik vrachtwagenchauffeur. Gamen heb ik altijd al geweldig gevonden en doe ik nog steeds, en ik heb altijd gedroomd van zelf games maken — zonder jarenlange opleiding leek dat onbereikbaar, tot AI het ineens wél mogelijk maakte.</p>
+            <p data-en="When I started I knew absolutely nothing about Flask servers or Unity, and had never worked with GitHub. I started with ChatGPT, copying code by hand into PythonAnywhere: one game, one leaderboard, and days to weeks per feature. I learned everything along the way. 12 months later, AI is still my co-pilot — now Claude Code inside VS Code — and that same workflow has become dozens of times faster.">Toen ik begon wist ik helemaal niks van Flask-servers of Unity, en had ik nog nooit met GitHub gewerkt. Ik begon met ChatGPT en kopieerde code handmatig naar PythonAnywhere: één game, één leaderboard, en dagen tot weken per feature. Alles heb ik gaandeweg geleerd. Inmiddels werk ik 12 maanden met AI als co-pilot — nu via Claude Code in VS Code — en is diezelfde workflow tientallen keren sneller geworden.</p>
+            <p data-en="Where traditional developers would take years, I proved that AI democratizes development. And I did it entirely alone, next to a 45-hour work week and a family with 2 kids. Not by taking over the thinking, but by being a powerful partner in the learning process — one that grew right along with me.">Waar traditionele developers jaren over zouden doen, bewees ik dat AI development democratiseert. En dat helemaal alleen, naast een baan van 45 uur per week en een gezin met 2 kinderen. Niet door het denken over te nemen, maar door een krachtige partner te zijn in het leerproces — een partner die met mij is meegegroeid.</p>
         </div>
 
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 data-en="The Vision">Het Idee</h3>
-                    <p data-en="Gaming communities wanted real rewards, but tournaments were chaotic and manual. I saw the opportunity to automate this with blockchain payouts.">Gaming communities wilden echte rewards, maar tournaments waren chaotisch en handmatig. Ik zag de kans om dit te automatiseren met blockchain payouts.</p>
+                    <p data-en="I've been into crypto for a while and know my way around wallets and blockchain. We had our own token with a Telegram group around it, where we played games for prizes — through Gamee and Naka, existing Telegram gaming platforms.">Ik zit al langer in crypto en ken wallets en blockchain goed. We hadden een eigen token met een Telegram-groep eromheen, waar we games speelden voor prijzen — via Gamee en Naka, bestaande Telegram-gameplatforms.</p>
+                    <p data-en="Our token is a tax token: a cut of every transaction goes into a pot that funds the prizes. But paying out those prizes was entirely manual, and it was a lot of work for the token's dev. I'd always wanted to automate that.">Onze token is een tax-token: een deel van elke transactie gaat naar een pot die de prijzen betaalt. Maar het uitkeren van die prijzen ging volledig handmatig, en dat was veel werk voor de dev van de token. Ik wilde dat altijd al automatiseren.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -526,7 +528,8 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 data-en="Learning by Breaking">Leren door te Breken</h3>
-                    <p data-en="Unity games that weren't sending scores. Database connections that failed. AI assistants stuck dreaming up the wrong solutions. Every crash was a lesson.">Unity games die geen scores doorstuurden. Database connections die faalden. AI assistants die bleven dromen over verkeerde oplossingen. Elke crash was een les.</p>
+                    <p data-en="The games we already had needed changes: read TelegramParams to link the score to the right user, then send that score to my server so the bot could show it on the leaderboard. That was version one, still without blockchain — automatic payouts (first Solana, later TON too) came later.">De games die we al gebruikten moesten worden aangepast: TelegramParams uitlezen om de score aan de juiste gebruiker te koppelen, en die score doorsturen naar mijn server zodat de bot 'm kon tonen op het leaderboard. Dat was versie één, nog zonder blockchain — de automatische payouts (eerst Solana, later ook TON) kwamen pas daarna.</p>
+                    <p data-en="Along the way: Unity games that weren't sending scores, database connections that failed, AI assistants stuck dreaming up the wrong solutions. Every crash was a lesson.">Onderweg: Unity games die geen scores doorstuurden, database connections die faalden, AI assistants die bleven dromen over verkeerde oplossingen. Elke crash was een les.</p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -557,7 +560,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3 data-en="More Games, More Range">Meer Games, Meer Diversiteit</h3>
+                    <h3 data-en="Month 7-9: More Games, More Range">Maand 7-9: Meer Games, Meer Diversiteit</h3>
                     <p data-en="Bought several games on CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Spaces) and rebuilt them to be server-authoritative: each game got its own deterministic simulation so the server can replay it bit-for-bit for anti-cheat. For Brick Breaker I also replaced the 3-ball game-over with an endless-balls mode, and I reskinned Ghosty into a new character: Buddy. I also designed and built five games completely from scratch: Highscore Heroes, Chart Retard, HSCdash, Claudiction and Honkmaster.">Een aantal games gekocht op CodeCanyon (Maze Runner, Ghosty, Brick Breaker, Oldman Rush, Helix Jump, Hopper, Spaces) en herbouwd tot server-authoritative: elke game kreeg een eigen deterministische simulatie zodat de server 'm bit-identiek kan naspelen voor anti-cheat. Bij Brick Breaker verving ik ook het 3-ballen-game-over door een endless-ballen-modus, en Ghosty reskinde ik tot een nieuw personage: Buddy. Daarnaast vijf games volledig zelf ontworpen en gebouwd: Highscore Heroes, Chart Retard, HSCdash, Claudiction en Honkmaster.</p>
                 </div>
                 <div class="timeline-dot"></div>
@@ -565,7 +568,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3 data-en="Own Infrastructure">Eigen Infrastructuur</h3>
+                    <h3 data-en="Month 9-10: Own Infrastructure">Maand 9-10: Eigen Infrastructuur</h3>
                     <p data-en="Moved from PythonAnywhere and Render to my own Hetzner VPS. The WebGL game builds also moved from GitHub Pages — which couldn't serve gzip properly — to Hetzner: smaller downloads, faster load times inside the Telegram Mini App. CI/CD via GitHub Actions, systemd services, and full control over the production environment.">Verhuizing van PythonAnywhere en Render naar een eigen Hetzner VPS. Ook de WebGL game-builds gingen van GitHub Pages — dat geen gzip goed kon serveren — naar Hetzner: kleinere downloads, snellere laadtijden in de Telegram Mini App. CI/CD via GitHub Actions, systemd services, en volledige controle over de productieomgeving.</p>
                 </div>
                 <div class="timeline-dot"></div>
@@ -573,7 +576,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Security Incident</h3>
+                    <h3 data-en="Month 10-11: Security Incident">Maand 10-11: Security Incident</h3>
                     <p data-en="A leaked bot token was hijacked within hours by an external poller. Rotated all secrets, moved everything to environment variables, hardened SSH with fail2ban. Solving a production incident under pressure — and coming out with stronger infrastructure.">Een gelekte bot-token werd binnen uren gekaapt door een externe poller. Secrets geroteerd, alles naar environment variables verplaatst, SSH gehard met fail2ban. Onder druk een productie-incident oplossen — en de infrastructuur er sterker uit laten komen.</p>
                 </div>
                 <div class="timeline-dot"></div>
@@ -581,7 +584,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3 data-en="Anti-Cheat Overhaul (ongoing)">Anti-Cheat Overhaul (lopend)</h3>
+                    <h3 data-en="Month 11-12: Anti-Cheat Overhaul (ongoing)">Maand 11-12: Anti-Cheat Overhaul (lopend)</h3>
                     <p data-en="The client used to send its own score — easy to fake. Now every game runs on its own deterministic fixed-point simulation (Q16.16, no floats) that the server can replay bit-for-bit — proven tick-for-tick identical between WebGL and native Linux builds. Migrated one game at a time — still the main work in progress today.">De client stuurde eerst zelf de score — makkelijk te vervalsen. Nu draait elke game op een eigen deterministische fixed-point simulatie (Q16.16, geen floats) die de server bit-identiek kan naspelen — bewezen tick voor tick gelijk tussen WebGL en Linux-native builds. Game voor game gemigreerd, dit is nog steeds het huidige hoofdwerk.</p>
                 </div>
                 <div class="timeline-dot"></div>
@@ -596,6 +599,7 @@
         <div class="card">
             <p data-en="Most of the work isn't in the features — it's in the setup. With <strong>De Paarse Dop</strong>, an inventory-management app I built as a favor for a brewery, I spent longer on the architecture, the deploy pipeline and the database structure than on the actual site itself.">Het grootste deel van het werk zit niet in de features — het zit in de opzet. Bij <strong>De Paarse Dop</strong>, een voorraadbeheer-app die ik als gunst bouwde voor een brouwerij, was ik langer bezig met de architectuur, de deploy pipeline en de database-structuur dan met de uiteindelijke site zelf.</p>
             <p data-en="But once those foundations are in place — automatic deploys, clear environment configuration, a simple git workflow — iterating becomes trivial. Then I can add features or fix bugs from almost anywhere, without having to rethink the whole setup.">Maar zodra die fundamenten staan — automatische deploys, duidelijke environment configuratie, een simpele git-workflow — wordt itereren triviaal. Dan kan ik features toevoegen of bugs fixen vanaf bijna elke plek, zonder de hele setup opnieuw te hoeven doordenken.</p>
+            <p data-en="Concretely: for every new project I start with a folder containing a VS Code workspace and Claude Code, and a CLAUDE.md from the very first minute. Then I set up a GitHub flow (which can also push somewhere else if needed). For a game, an empty Unity project gets added too, in the same folder or next to it. Only once all of that is in place do I actually start building.">Concreet: voor elk nieuw project maak ik eerst een map aan met een VS Code workspace en Claude Code, en meteen een CLAUDE.md erin. Daarna zet ik een GitHub-flow op (die ook naar een andere plek kan pushen als dat nodig is). Bij een game komt er ook een leeg Unity-project bij, in dezelfde map of ernaast. Pas als dat allemaal staat, begin ik echt met bouwen.</p>
         </div>
 
         <div class="code-block" data-en="Local changes → git push → GitHub Actions / GitHub Pages → Live">
@@ -626,9 +630,9 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
             <div class="tech-item">
                 <h3>Backend Mastery</h3>
                 <ul>
-                    <li data-en="Python Telegram Bot API for real-time messaging">Python Telegram Bot API voor real-time messaging</li>
-                    <li data-en="Flask server on my own Hetzner VPS for score processing">Flask server op een eigen Hetzner VPS voor score processing</li>
-                    <li data-en="SQL database with optimized queries">SQL database met geoptimaliseerde queries</li>
+                    <li data-en="main.py: the Telegram bot itself, with a job queue for challenge updates, notifications and payouts, plus a heartbeat watchdog that auto-restarts it if the event loop ever stalls">main.py: de Telegram bot zelf, met een job queue voor challenge-updates, notificaties en payouts, plus een heartbeat-watchdog die 'm automatisch herstart als de event loop ooit vastloopt</li>
+                    <li data-en="score_server.py: Flask API on my own Hetzner VPS that stores scores in SQLite and writes notifications the bot picks up">score_server.py: Flask-API op een eigen Hetzner VPS die scores opslaat in SQLite en notificaties wegschrijft die de bot oppikt</li>
+                    <li data-en="gameserver.py: FastAPI WebSocket server for real-time PvP and the replay-based anti-cheat">gameserver.py: FastAPI WebSocket-server voor real-time PvP en de replay-gebaseerde anti-cheat</li>
                     <li data-en="Async job scheduling for automated tournaments">Async job scheduling voor automated tournaments</li>
                     <li>Comprehensive error handling & recovery systems</li>
                 </ul>
@@ -638,8 +642,8 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
                 <h3>Blockchain Integration</h3>
                 <ul>
                     <li>TON & Solana network support</li>
-                    <li>Automated wallet validation</li>
-                    <li data-en="Minimum hold requirements for eligibility">Minimum hold requirements voor eligibility</li>
+                    <li data-en="Group owners configure challenges (network, prizes, minimum hold) from the Mini App">Groepseigenaren stellen challenges in (netwerk, prijzen, minimum hold) vanuit de Mini App</li>
+                    <li data-en="Players link their wallet in the Mini App to receive prizes automatically">Spelers koppelen hun wallet in de Mini App om automatisch prijzen te ontvangen</li>
                     <li data-en="Smart payout distribution algorithms">Smart payout distribution algoritmes</li>
                     <li>Multi-token prize pools</li>
                 </ul>
@@ -675,12 +679,13 @@ Unity Games (C#) → HTTP Posts → Flask Server → SQL Database → Python Bot
 
         <div class="card">
             <p data-en="Five games I designed and built entirely myself in Unity — no team, no artists, no other developers. Just me and Claude as an AI partner, from concept to a working WebGL build.">Vijf games heb ik volledig zelf ontworpen en gebouwd in Unity — geen team, geen artists, geen andere developers. Alleen ik en Claude als AI-partner, van concept tot werkende WebGL-build.</p>
+            <p data-en="I work in Unity's Animator Controller for character animation state machines, use AI-generated 3D models from Meshy where I need custom assets, and buy animation packs, levels and a sound library from the Unity Asset Store rather than reinventing every wheel.">Ik werk met Unity's Animator Controller voor animatie-state-machines, gebruik AI-gegenereerde 3D-modellen van Meshy waar ik custom assets nodig heb, en koop animatiepacks, levels en een sound library in de Unity Asset Store in plaats van elk wiel opnieuw uit te vinden.</p>
         </div>
 
         <div class="tech-grid">
             <div class="tech-item">
                 <h3>Highscore Heroes</h3>
-                <p data-en="A Unity WebGL PvP fighting game inside a Telegram Mini App. Real-time multiplayer over WebSocket, a Budokai-style combo system with input buffering and animation-driven windows, matchmaking, and a rule-based AI opponent with four difficulty levels that steps in whenever no human opponent is available.">Unity WebGL PvP fighting game in een Telegram Mini App. Real-time multiplayer via WebSocket, een Budokai-stijl combo-systeem met input buffering en animatie-gestuurde windows, matchmaking, en een rule-based AI-tegenstander met vier moeilijkheidsgraden die inspringt zodra er geen menselijke tegenstander beschikbaar is.</p>
+                <p data-en="A Unity WebGL PvP fighting game inside a Telegram Mini App. Real-time multiplayer over WebSocket, a Budokai-style combo system with input buffering and animation-driven windows, matchmaking, and a rule-based AI opponent with four difficulty levels that steps in whenever no human opponent is available. Still far from finished — special moves and a guard meter are still on the roadmap — but already fully playable and live.">Unity WebGL PvP fighting game in een Telegram Mini App. Real-time multiplayer via WebSocket, een Budokai-stijl combo-systeem met input buffering en animatie-gestuurde windows, matchmaking, en een rule-based AI-tegenstander met vier moeilijkheidsgraden die inspringt zodra er geen menselijke tegenstander beschikbaar is. Nog lang niet af — special moves en een guard meter staan nog op de roadmap — maar al wel volledig speelbaar en live.</p>
             </div>
             <div class="tech-item">
                 <h3>Chart Retard</h3>
